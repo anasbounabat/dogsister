@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="react.production.min.js"></script>
+<script src="react-dom.production.min.js"></script>
+<script src="dc-runtime.js"></script>
+<script src="cursor.js"></script>
+</head>
+<body>
+<div id="ds-loader" style="position:fixed;inset:0;z-index:999999;background:#8a2140;display:flex;align-items:center;justify-content:center;transition:opacity .6s ease,visibility .6s ease">
+<div style="position:relative;width:96px;height:96px;display:flex;align-items:center;justify-content:center">
+<div style="position:absolute;inset:0;border-radius:50%;border:3px solid rgba(243,237,230,.25);border-top-color:#f3ede6;animation:ds-spin .9s linear infinite"></div>
+<img src="logo.png" alt="DogSister" style="width:54px;height:54px;border-radius:50%;object-fit:cover">
+</div>
+</div>
+<x-dc>
+<helmet data-dc-atomics="">
+<style>
+html{scroll-snap-type:y proximity;scroll-padding-top:60px;scroll-behavior:smooth}
+body{margin:0;background:#ffffff;color:#1d1d1f;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#1d1d1f;text-decoration:none}a:hover{color:#8a2140}
+@keyframes ds-fadeup{from{opacity:0;transform:translateY(36px) scale(.98);filter:blur(8px)}to{opacity:1;transform:none;filter:none}}
+@keyframes ds-navin{from{opacity:0;transform:translateY(-100%)}to{opacity:1;transform:none}}
+@keyframes ds-spin{to{transform:rotate(360deg)}}
+@keyframes ds-float{0%,100%{transform:translateY(-8px) rotate(var(--ds-rot,0deg))}50%{transform:translateY(10px) rotate(var(--ds-rot,0deg))}}
+</style></helmet>
+
+<nav style="position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:40px;padding:0 48px;height:60px;background:transparent">
+<a href="Accueil.html" style="display:flex;align-items:center;gap:10px;font-size:19px;font-weight:700;letter-spacing:-.02em"><img src="logo.png" alt="DogSister" style="height:34px;width:34px;border-radius:50%;object-fit:cover">DogSister</a>
+<span style="flex:1"></span>
+<div style="display:flex;align-items:center;gap:32px;font-size:14px">
+<a href="Accueil.html" style="color:#6e6e73;transition:color .25s" style-hover="color:#1d1d1f">Accueil</a><a href="Services.html" style="color:#6e6e73;transition:color .25s" style-hover="color:#1d1d1f">Services &amp; Tarifs</a><a href="Activites.html" style="color:#1d1d1f;font-weight:600;border-bottom:2px solid #8a2140;padding-bottom:2px;transition:color .25s" style-hover="color:#1d1d1f">Activités</a><a href="Local.html" style="color:#6e6e73;transition:color .25s" style-hover="color:#1d1d1f">Le local</a><a href="A-propos.html" style="color:#6e6e73;transition:color .25s" style-hover="color:#1d1d1f">À propos</a><a href="Contact.html" style="color:#6e6e73;transition:color .25s" style-hover="color:#1d1d1f">Contact</a>
+</div>
+<a href="Contact.html" style="background:#3d1522;color:#fff;font-size:14px;font-weight:500;padding:9px 24px;border-radius:22px;transition:background .25s" style-hover="background:#8a2140;color:#fff">Réserver</a>
+</nav>
+
+<header data-reveal="" data-screen-label="Activités hero" style="box-sizing:border-box;min-height:100vh;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:24px;padding:48px 24px;background:#f8e4ea">
+<p style="margin:0;font-size:15px;font-weight:600;color:#8a2140;letter-spacing:.06em;text-transform:uppercase">Activités &amp; événements</p>
+<h1 style="margin:0;font-size:60px;line-height:1.05;font-weight:700;letter-spacing:-.03em;max-width:800px;text-wrap:balance">Le week-end, le local devient atelier.</h1>
+<p style="margin:0;font-size:21px;line-height:1.5;color:#6e6e73;max-width:580px;text-wrap:pretty">Couture, céramique, et bientôt bien plus. Des moments créatifs à partager, toujours autour du chien.</p>
+<a href="#agenda" style="background:#8a2140;color:#fff;font-size:17px;font-weight:500;padding:14px 32px;border-radius:24px" style-hover="background:#6f1a33;color:#fff">Voir l'agenda</a>
+</header>
+
+<section id="agenda" data-reveal="" data-screen-label="Agenda" style="box-sizing:border-box;min-height:100vh;scroll-snap-align:start;background:#f3ede6;padding:96px 48px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:48px">
+<h2 style="margin:0;font-size:44px;font-weight:700;letter-spacing:-.02em">Ce mois-ci au local</h2>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px;width:min(980px,100%)">
+<article style="background:#fff;border-radius:24px;overflow:hidden;display:flex;flex-direction:column" style-hover="transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.08);transition:all .3s ease">
+<div style="height:240px;background:repeating-linear-gradient(45deg,#f5f0ec,#f5f0ec 14px,#efe7e0 14px,#efe7e0 28px);display:flex;align-items:center;justify-content:center;color:#a08874;font-family:ui-monospace,Menlo,monospace;font-size:12px">photo — atelier couture</div>
+<div style="padding:28px 32px 32px;display:flex;flex-direction:column;gap:10px">
+<p style="margin:0;font-size:13px;font-weight:600;color:#8a2140;letter-spacing:.06em;text-transform:uppercase">Samedi · 14h — 16h</p>
+<h3 style="margin:0;font-size:24px;font-weight:700">Atelier couture</h3>
+<p style="margin:0;font-size:16px;line-height:1.55;color:#6e6e73;text-wrap:pretty">Cousez un bandana ou un manteau sur mesure pour votre chien. Matériel fourni, tous niveaux.</p>
+<div style="display:flex;align-items:center;gap:16px;margin-top:8px">
+<span style="font-size:17px;font-weight:600">25 € / pers.</span>
+<a href="Contact.html" style="background:#3d1522;color:#fff;font-size:14px;font-weight:500;padding:10px 22px;border-radius:24px" style-hover="background:#8a2140;color:#fff">Réserver ma place</a>
+</div>
+</div>
+</article>
+<article style="background:#fff;border-radius:24px;overflow:hidden;display:flex;flex-direction:column" style-hover="transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.08);transition:all .3s ease">
+<div style="height:240px;background:repeating-linear-gradient(45deg,#f5f0ec,#f5f0ec 14px,#efe7e0 14px,#efe7e0 28px);display:flex;align-items:center;justify-content:center;color:#a08874;font-family:ui-monospace,Menlo,monospace;font-size:12px">photo — atelier céramique</div>
+<div style="padding:28px 32px 32px;display:flex;flex-direction:column;gap:10px">
+<p style="margin:0;font-size:13px;font-weight:600;color:#8a2140;letter-spacing:.06em;text-transform:uppercase">Dimanche · 10h — 12h</p>
+<h3 style="margin:0;font-size:24px;font-weight:700">Atelier céramique</h3>
+<p style="margin:0;font-size:16px;line-height:1.55;color:#6e6e73;text-wrap:pretty">Façonnez la gamelle ou la médaille de votre compagnon. Cuisson incluse, pièce à récupérer au local.</p>
+<div style="display:flex;align-items:center;gap:16px;margin-top:8px">
+<span style="font-size:17px;font-weight:600">35 € / pers.</span>
+<a href="Contact.html" style="background:#3d1522;color:#fff;font-size:14px;font-weight:500;padding:10px 22px;border-radius:24px" style-hover="background:#8a2140;color:#fff">Réserver ma place</a>
+</div>
+</div>
+</article>
+</div>
+<p style="margin:0;font-size:16px;color:#6e6e73">De nouvelles activités arrivent chaque mois — suivez-nous pour ne rien manquer.</p>
+</section>
+
+<section data-reveal="" data-screen-label="Espace pro" style="box-sizing:border-box;min-height:100vh;scroll-snap-align:start;background:#3d1522;color:#f5f5f7;padding:96px 48px;display:flex;align-items:center;justify-content:center">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;width:min(1080px,100%);align-items:center">
+<div style="display:flex;flex-direction:column;gap:24px">
+<p style="margin:0;font-size:14px;font-weight:600;color:#d98aa0;letter-spacing:.06em;text-transform:uppercase">Espace pro</p>
+<h2 style="margin:0;font-size:48px;font-weight:700;letter-spacing:-.03em;text-wrap:balance">Vous animez un atelier ? Le local est à vous.</h2>
+<p style="margin:0;font-size:19px;line-height:1.55;color:#a1a1a6;text-wrap:pretty">Créateurs, artisans, éducateurs : proposez votre activité du week-end. Nous fournissons le lieu, la communauté et la communication — vous apportez votre savoir-faire.</p>
+</div>
+<form style="background:#4a1f30;border-radius:24px;padding:40px;display:flex;flex-direction:column;gap:16px">
+<input placeholder="Votre nom / atelier" style="font-family:inherit;font-size:16px;padding:14px 18px;border-radius:12px;border:1px solid #6e2f42;background:#3d1522;color:#f5f5f7;outline:none" style-focus="border-color:#8a2140">
+<input placeholder="Email ou téléphone" style="font-family:inherit;font-size:16px;padding:14px 18px;border-radius:12px;border:1px solid #6e2f42;background:#3d1522;color:#f5f5f7;outline:none" style-focus="border-color:#8a2140">
+<textarea placeholder="Décrivez votre activité (thème, durée, matériel, tarif envisagé…)" rows="4" style="font-family:inherit;font-size:16px;padding:14px 18px;border-radius:12px;border:1px solid #6e2f42;background:#3d1522;color:#f5f5f7;outline:none;resize:vertical" style-focus="border-color:#8a2140"></textarea>
+<button type="button" sc-camel-on-click="{{ proSubmit }}" style="font-family:inherit;background:#8a2140;color:#fff;font-size:17px;font-weight:500;padding:14px 24px;border-radius:24px;border:none;cursor:pointer" style-hover="background:#6f1a33">{{ proLabel }}</button>
+</form>
+</div>
+</section>
+
+<footer style="background:#f3ede6;border-top:1px solid rgba(0,0,0,.08);padding:40px 48px;display:flex;align-items:center;gap:32px;font-size:13px;color:#6e6e73">
+<span style="display:flex;align-items:center;gap:8px;font-weight:700;color:#1d1d1f;font-size:15px"><img src="logo.png" alt="DogSister" style="height:26px;width:26px;border-radius:50%;object-fit:cover">DogSister</span>
+<span>Garde, promenades et éducation canine — Fontenay-sous-Bois, Île-de-France</span>
+<span style="flex:1"></span>
+<a href="Accueil.html" style="color:#6e6e73">Accueil</a><a href="Services.html" style="color:#6e6e73">Services</a><a href="Local.html" style="color:#6e6e73">Le local</a><a href="A-propos.html" style="color:#6e6e73">À propos</a><a href="Contact.html" style="color:#6e6e73">Contact</a>
+</footer>
+
+
+</x-dc>
+<script type="text/x-dc" data-dc-script="">
+class Component extends DCLogic {
+  state = { sent: false };
+  componentDidMount() {
+    if (window.initCursor) window.initCursor();
+    const nav = document.querySelector('nav');
+    if (nav) nav.style.animation = 'ds-navin .7s cubic-bezier(.22,.61,.36,1) both';
+    document.querySelectorAll('[data-float]').forEach((el, i) => {
+      el.style.setProperty('--ds-rot', el.dataset.float || '0deg');
+      el.style.animation = 'ds-float ' + (4.5 + i * 0.9) + 's ease-in-out ' + (i * 0.7) + 's infinite';
+    });
+    const els = document.querySelectorAll('[data-reveal]');
+    const kidsOf = (el) => Array.from(el.children);
+    const reveal = (el) => {
+      let d = 0;
+      kidsOf(el).forEach((k) => {
+        k.style.opacity = '';
+        const disp = getComputedStyle(k).display;
+        const sub = (k.children.length >= 2 && (disp === 'grid' || disp === 'flex')) ? Array.from(k.children) : null;
+        if (sub) {
+          sub.forEach(s => {
+            s.style.animation = 'ds-fadeup .9s cubic-bezier(.22,.61,.36,1) ' + d.toFixed(2) + 's both';
+            d += 0.1;
+          });
+        } else {
+          k.style.animation = 'ds-fadeup .9s cubic-bezier(.22,.61,.36,1) ' + d.toFixed(2) + 's both';
+          d += 0.12;
+        }
+      });
+    };
+    const hide = (el) => kidsOf(el).forEach(k => { k.style.opacity = '0'; });
+    const io = ('IntersectionObserver' in window) ? new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { reveal(e.target); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 }) : null;
+    els.forEach(el => {
+      const r = el.getBoundingClientRect();
+      const visible = r.top < window.innerHeight && r.bottom > 0;
+      if (visible || !io) { reveal(el); }
+      else { hide(el); io.observe(el); }
+    });
+    this._fallback = setTimeout(() => els.forEach(el => kidsOf(el).forEach(k => {
+      if (k.style.opacity === '0') { k.style.opacity = ''; k.style.animation = 'ds-fadeup .9s both'; }
+    })), 1800);
+    this._io = io;
+  }
+  componentWillUnmount() { if (this._io) this._io.disconnect(); clearTimeout(this._fallback); }
+  renderVals() {
+    return {
+      proLabel: this.state.sent ? 'Proposition envoyée — merci !' : 'Proposer mon activité',
+      proSubmit: () => this.setState({ sent: true })
+    };
+  }
+}
+</script>
+<script src="features.js"></script>
+</body></html>

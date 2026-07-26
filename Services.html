@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="react.production.min.js"></script>
+<script src="react-dom.production.min.js"></script>
+<script src="dc-runtime.js"></script>
+<script src="cursor.js"></script>
+</head>
+<body>
+<div id="ds-loader" style="position:fixed;inset:0;z-index:999999;background:#8a2140;display:flex;align-items:center;justify-content:center;transition:opacity .6s ease,visibility .6s ease">
+<div style="position:relative;width:96px;height:96px;display:flex;align-items:center;justify-content:center">
+<div style="position:absolute;inset:0;border-radius:50%;border:3px solid rgba(243,237,230,.25);border-top-color:#f3ede6;animation:ds-spin .9s linear infinite"></div>
+<img src="logo.png" alt="DogSister" style="width:54px;height:54px;border-radius:50%;object-fit:cover">
+</div>
+</div>
+<x-dc>
+<helmet data-dc-atomics="">
+<style>
+html{scroll-snap-type:y proximity;scroll-padding-top:60px;scroll-behavior:smooth}
+body{margin:0;background:#ffffff;color:#1d1d1f;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#1d1d1f;text-decoration:none}a:hover{color:#8a2140}
+@keyframes ds-fadeup{from{opacity:0;transform:translateY(36px) scale(.98);filter:blur(8px)}to{opacity:1;transform:none;filter:none}}
+@keyframes ds-navin{from{opacity:0;transform:translateY(-100%)}to{opacity:1;transform:none}}
+@keyframes ds-spin{to{transform:rotate(360deg)}}
+@keyframes ds-pricein{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes ds-float{0%,100%{transform:translateY(-8px) rotate(var(--ds-rot,0deg))}50%{transform:translateY(10px) rotate(var(--ds-rot,0deg))}}
+</style></helmet>
+
+<nav style="position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:40px;padding:0 48px;height:60px;background:transparent">
+<a href="Accueil.html" style="display:flex;align-items:center;gap:10px;font-size:19px;font-weight:700;letter-spacing:-.02em"><img src="logo.png" alt="DogSister" style="height:34px;width:34px;border-radius:50%;object-fit:cover">DogSister</a>
+<span style="flex:1"></span>
+<div style="display:flex;align-items:center;gap:32px;font-size:14px">
+<a href="Accueil.html" style="color:#6e6e73;transition:color .25s" style-hover="color:#1d1d1f">Accueil</a><a href="Services.html" style="color:#1d1d1f;font-weight:600;border-bottom:2px solid #8a2140;padding-bottom:2px;transition:color .25s" style-hover="color:#1d1d1f">Services &amp; Tarifs</a><a href="Activites.html" style="color:#6e6e73;transition:color .25s" style-hover="color:#1d1d1f">Activités</a><a href="Local.html" style="color:#6e6e73;transition:color .25s" style-hover="color:#1d1d1f">Le local</a><a href="A-propos.html" style="color:#6e6e73;transition:color .25s" style-hover="color:#1d1d1f">À propos</a><a href="Contact.html" style="color:#6e6e73;transition:color .25s" style-hover="color:#1d1d1f">Contact</a>
+</div>
+<a href="Contact.html" style="background:#3d1522;color:#fff;font-size:14px;font-weight:500;padding:9px 24px;border-radius:22px;transition:background .25s" style-hover="background:#8a2140;color:#fff">Réserver</a>
+</nav>
+
+<header data-reveal="" data-screen-label="Services hero" style="box-sizing:border-box;min-height:100vh;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:24px;padding:48px 24px;background:#f3ede6">
+<p style="margin:0;font-size:15px;font-weight:600;color:#8a2140;letter-spacing:.06em;text-transform:uppercase">Services &amp; tarifs</p>
+<h1 style="margin:0;font-size:60px;line-height:1.05;font-weight:700;letter-spacing:-.03em;max-width:800px;text-wrap:balance">Une garde rythmée, du matin au réveil.</h1>
+<p style="margin:0;font-size:21px;line-height:1.5;color:#6e6e73;max-width:600px;text-wrap:pretty">Journée, nuit, 24h non-stop, à l'heure ou balade à domicile : chaque formule s'adapte à votre quotidien et au rythme de votre chien.</p>
+<a href="#tarifs" style="background:#8a2140;color:#fff;font-size:17px;font-weight:500;padding:14px 32px;border-radius:24px" style-hover="background:#6f1a33;color:#fff">Voir les tarifs</a>
+</header>
+
+<section data-reveal="" data-screen-label="Garde journée" style="box-sizing:border-box;min-height:100vh;scroll-snap-align:start;background:#f3ede6;padding:96px 48px;display:flex;align-items:center;justify-content:center">
+<div style="display:grid;grid-template-columns:1.1fr 1fr;gap:64px;width:min(1180px,100%);align-items:center">
+<div style="height:500px;border-radius:24px;background:repeating-linear-gradient(45deg,#f5f0ec,#f5f0ec 14px,#efe7e0 14px,#efe7e0 28px);display:flex;align-items:center;justify-content:center;color:#a08874;font-family:ui-monospace,Menlo,monospace;font-size:12px">photo — journée au local</div>
+<div style="display:flex;flex-direction:column;gap:20px">
+<p style="margin:0;font-size:14px;font-weight:600;color:#8a2140;letter-spacing:.06em;text-transform:uppercase">01 — Garde à la journée · 8h – 18h</p>
+<h2 style="margin:0;font-size:44px;font-weight:700;letter-spacing:-.02em;text-wrap:balance">Une journée rythmée, rien que pour lui.</h2>
+<p style="margin:0;font-size:19px;line-height:1.55;color:#6e6e73;text-wrap:pretty">Promenades, jeux, moments de repos et toute l'attention dont il a besoin, dans un espace adapté et sécurisé.</p>
+<p style="margin:0;font-size:17px;color:#1d1d1f;font-weight:600">50 € / jour abonné · 65 € / jour normal</p>
+</div>
+</div>
+</section>
+
+<section data-reveal="" data-screen-label="Garde nuit" style="box-sizing:border-box;min-height:100vh;scroll-snap-align:start;background:#ffffff;padding:96px 48px;display:flex;align-items:center;justify-content:center">
+<div style="display:grid;grid-template-columns:1fr 1.1fr;gap:64px;width:min(1180px,100%);align-items:center">
+<div style="display:flex;flex-direction:column;gap:20px">
+<p style="margin:0;font-size:14px;font-weight:600;color:#8a2140;letter-spacing:.06em;text-transform:uppercase">02 — Garde la nuit · 18h – 8h</p>
+<h2 style="margin:0;font-size:44px;font-weight:700;letter-spacing:-.02em;text-wrap:balance">Comme à la maison, jusqu'au réveil.</h2>
+<p style="margin:0;font-size:19px;line-height:1.55;color:#6e6e73;text-wrap:pretty">Une nuit au calme, une balade en soirée, une promenade au réveil et beaucoup d'attention.</p>
+<p style="margin:0;font-size:17px;color:#1d1d1f;font-weight:600">30 € / nuit abonné · 45 € / nuit normal</p>
+</div>
+<div style="height:500px;border-radius:24px;background:repeating-linear-gradient(45deg,#f5f0ec,#f5f0ec 14px,#efe7e0 14px,#efe7e0 28px);display:flex;align-items:center;justify-content:center;color:#a08874;font-family:ui-monospace,Menlo,monospace;font-size:12px">photo — coin repos la nuit</div>
+</div>
+</section>
+
+<section data-reveal="" data-screen-label="Balade" style="box-sizing:border-box;min-height:100vh;scroll-snap-align:start;background:#f3ede6;padding:96px 48px;display:flex;align-items:center;justify-content:center">
+<div style="display:grid;grid-template-columns:1.1fr 1fr;gap:64px;width:min(1180px,100%);align-items:center">
+<div style="height:500px;border-radius:24px;background:repeating-linear-gradient(45deg,#f5f0ec,#f5f0ec 14px,#efe7e0 14px,#efe7e0 28px);display:flex;align-items:center;justify-content:center;color:#a08874;font-family:ui-monospace,Menlo,monospace;font-size:12px">photo — balade au bois de Vincennes</div>
+<div style="display:flex;flex-direction:column;gap:20px">
+<p style="margin:0;font-size:14px;font-weight:600;color:#8a2140;letter-spacing:.06em;text-transform:uppercase">03 — Balade à domicile · 1h30 – 2h</p>
+<h2 style="margin:0;font-size:44px;font-weight:700;letter-spacing:-.02em;text-wrap:balance">On vient le chercher chez vous.</h2>
+<p style="margin:0;font-size:19px;line-height:1.55;color:#6e6e73;text-wrap:pretty">Nous récupérons votre chien à domicile, promenade au bois selon ses capacités, puis retour à la maison. Besoin d'un simple coup de main ? Formule à l'heure disponible.</p>
+<p style="margin:0;font-size:17px;color:#1d1d1f;font-weight:600">35 € / balade · ou 10 € / heure</p>
+</div>
+</div>
+</section>
+
+<section id="tarifs" data-reveal="" data-screen-label="Tarifs" style="box-sizing:border-box;min-height:100vh;scroll-snap-align:start;background:#3d1522;color:#f5f5f7;padding:96px 48px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:40px">
+<div style="text-align:center;display:flex;flex-direction:column;gap:16px;max-width:640px">
+<h2 style="margin:0;font-size:44px;font-weight:700;letter-spacing:-.02em">Tous les tarifs.</h2>
+<p style="margin:0;font-size:19px;line-height:1.5;color:#a1a1a6">Basculez sur « Abonné » pour voir vos tarifs préférentiels.</p>
+</div>
+<div style="position:relative;display:flex;background:#4a1f30;padding:6px;border-radius:24px">
+<div style="{{ pillStyle }}"></div>
+<button type="button" sc-camel-on-click="{{ setNormal }}" style="{{ normalStyle }}">Tarif normal</button>
+<button type="button" sc-camel-on-click="{{ setAbo }}" style="{{ aboStyle }}">Tarif abonné</button>
+</div>
+<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px;width:min(1240px,100%);align-items:stretch">
+<sc-for list="{{ offers }}" as="o" hint-placeholder-count="5">
+<article style="{{ o.card }}">
+<div style="display:flex;flex-direction:column;gap:6px"><h3 style="margin:0;font-size:18px;font-weight:700">{{ o.name }}</h3><p style="margin:0;font-size:13px;color:#a1a1a6">{{ o.window }}</p></div>
+<p style="margin:0;font-size:34px;font-weight:700;letter-spacing:-.02em;animation:{{ priceAnim }}">{{ o.price }}<span style="font-size:14px;font-weight:400;color:#a1a1a6"> {{ o.unit }}</span></p>
+<p style="margin:0;font-size:13px;line-height:1.4;color:#d2d2d7;flex:1">{{ o.desc }}</p>
+<a href="Contact.html" style="{{ o.btn }}" style-hover="background:#6f1a33;color:#fff">Nous contacter</a>
+</article>
+</sc-for>
+</div>
+<p style="margin:0;font-size:14px;color:#a1a1a6">Acompte de 20 % à la réservation, solde le jour du dépôt · Navette à domicile disponible</p>
+</section>
+
+<section data-reveal="" data-screen-label="En pratique" style="box-sizing:border-box;min-height:100vh;scroll-snap-align:start;background:#ffffff;padding:96px 48px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:48px">
+<div style="text-align:center;display:flex;flex-direction:column;gap:16px;max-width:640px">
+<h2 style="margin:0;font-size:44px;font-weight:700;letter-spacing:-.02em">La garde, en pratique.</h2>
+<p style="margin:0;font-size:19px;line-height:1.5;color:#6e6e73">Tout ce qu'il faut savoir avant de nous confier votre chien.</p>
+</div>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px;width:min(1080px,100%)">
+<article style="background:#f3ede6;border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:12px">
+<h3 style="margin:0;font-size:20px;font-weight:700">Localisation &amp; navette</h3>
+<p style="margin:0;font-size:15px;line-height:1.55;color:#6e6e73">28 rue Charles Bassée, Fontenay-sous-Bois 94120. Arrivées &amp; départs : 8h–9h30, 12h–13h30, 18h–19h30. Navette : aller 15 €, retour 15 €, aller-retour 25 €.</p>
+</article>
+<article style="background:#f3ede6;border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:12px">
+<h3 style="margin:0;font-size:20px;font-weight:700">Ce qui est inclus</h3>
+<p style="margin:0;font-size:15px;line-height:1.55;color:#6e6e73">Balades régulières au bois de Vincennes, sorties de 1h30 à 2h, travail éducatif (propreté, focus, auto-contrôle, rappel, proprioception) encadré par Sarah, éducatrice canine certifiée. Sarah et Hanna présentes en continu.</p>
+</article>
+<article style="background:#f3ede6;border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:12px">
+<h3 style="margin:0;font-size:20px;font-weight:700">Alimentation</h3>
+<p style="margin:0;font-size:15px;line-height:1.55;color:#6e6e73">Merci d'apporter la nourriture habituelle de votre chien : nous respectons son régime pour éviter tout trouble digestif pendant la garde.</p>
+</article>
+<article style="background:#f3ede6;border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:12px">
+<h3 style="margin:0;font-size:20px;font-weight:700">Paiement &amp; annulation</h3>
+<p style="margin:0;font-size:15px;line-height:1.55;color:#6e6e73">Acompte de 20 % à la réservation, solde le jour du dépôt. Annulation 7 jours ou plus avant la garde : acompte remboursé. Moins de 7 jours avant : acompte conservé.</p>
+</article>
+</div>
+</section>
+
+<footer style="background:#f3ede6;border-top:1px solid rgba(0,0,0,.08);padding:40px 48px;display:flex;align-items:center;gap:32px;font-size:13px;color:#6e6e73">
+<span style="display:flex;align-items:center;gap:8px;font-weight:700;color:#1d1d1f;font-size:15px"><img src="logo.png" alt="DogSister" style="height:26px;width:26px;border-radius:50%;object-fit:cover">DogSister</span>
+<span>Garde, promenades et éducation canine — Fontenay-sous-Bois, Île-de-France</span>
+<span style="flex:1"></span>
+<a href="Accueil.html" style="color:#6e6e73">Accueil</a><a href="Activites.html" style="color:#6e6e73">Activités</a><a href="Local.html" style="color:#6e6e73">Le local</a><a href="A-propos.html" style="color:#6e6e73">À propos</a><a href="Contact.html" style="color:#6e6e73">Contact</a>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script="">
+class Component extends DCLogic {
+  state = { abo: false };
+  componentDidMount() {
+    if (window.initCursor) window.initCursor();
+    const nav = document.querySelector('nav');
+    if (nav) nav.style.animation = 'ds-navin .7s cubic-bezier(.22,.61,.36,1) both';
+    document.querySelectorAll('[data-float]').forEach((el, i) => {
+      el.style.setProperty('--ds-rot', el.dataset.float || '0deg');
+      el.style.animation = 'ds-float ' + (4.5 + i * 0.9) + 's ease-in-out ' + (i * 0.7) + 's infinite';
+    });
+    const els = document.querySelectorAll('[data-reveal]');
+    const kidsOf = (el) => Array.from(el.children);
+    const reveal = (el) => {
+      let d = 0;
+      kidsOf(el).forEach((k) => {
+        k.style.opacity = '';
+        const disp = getComputedStyle(k).display;
+        const sub = (k.children.length >= 2 && (disp === 'grid' || disp === 'flex')) ? Array.from(k.children) : null;
+        if (sub) {
+          sub.forEach(s => {
+            s.style.animation = 'ds-fadeup .9s cubic-bezier(.22,.61,.36,1) ' + d.toFixed(2) + 's both';
+            d += 0.1;
+          });
+        } else {
+          k.style.animation = 'ds-fadeup .9s cubic-bezier(.22,.61,.36,1) ' + d.toFixed(2) + 's both';
+          d += 0.12;
+        }
+      });
+    };
+    const hide = (el) => kidsOf(el).forEach(k => { k.style.opacity = '0'; });
+    const io = ('IntersectionObserver' in window) ? new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { reveal(e.target); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 }) : null;
+    els.forEach(el => {
+      const r = el.getBoundingClientRect();
+      const visible = r.top < window.innerHeight && r.bottom > 0;
+      if (visible || !io) { reveal(el); }
+      else { hide(el); io.observe(el); }
+    });
+    this._fallback = setTimeout(() => els.forEach(el => kidsOf(el).forEach(k => {
+      if (k.style.opacity === '0') { k.style.opacity = ''; k.style.animation = 'ds-fadeup .9s both'; }
+    })), 1800);
+    this._io = io;
+  }
+  componentWillUnmount() { if (this._io) this._io.disconnect(); clearTimeout(this._fallback); }
+  renderVals() {
+    const abo = this.state.abo;
+    const tab = 'font-family:inherit;font-size:15px;font-weight:500;width:170px;padding:10px 0;border-radius:20px;border:none;cursor:pointer;background:transparent;position:relative;z-index:1;transition:color .35s;';
+    const data = [
+      { name: 'Garde journée', window: '8h – 18h', normal: '65 €', abo: '50 €', unit: '/ jour', desc: 'Journée rythmée : balades, jeux, repos et attention.', pop: true },
+      { name: 'Garde nuit', window: '18h – 8h', normal: '45 €', abo: '30 €', unit: '/ nuit', desc: 'Une nuit au calme, balade du soir et du réveil.', pop: false },
+      { name: 'Package 24h', window: '24h non-stop', normal: '90 €', abo: '70 €', unit: '/ 24h', desc: 'La solution complète pour vos déplacements.', pop: false },
+      { name: "Service à l'heure", window: 'Flexible', normal: '10 €', abo: '10 €', unit: '/ heure', desc: "Une heure, deux heures : formule souple au quotidien.", pop: false },
+      { name: 'Balade à domicile', window: '1h30 – 2h', normal: '35 €', abo: '35 €', unit: '/ balade', desc: 'On vient le chercher, balade au bois, puis retour.', pop: false }
+    ];
+    const offers = data.map(o => ({
+      name: o.name,
+      window: o.window,
+      price: abo ? o.abo : o.normal,
+      unit: o.unit,
+      desc: o.desc,
+      card: 'background:#4a1f30;border-radius:20px;padding:28px 22px;display:flex;flex-direction:column;gap:16px' + (o.pop ? ';outline:2px solid #8a2140' : ''),
+      btn: 'text-align:center;font-size:14px;font-weight:500;padding:11px 0;border-radius:22px;' + (o.pop ? 'background:#8a2140;color:#fff' : 'border:1px solid #6e6e73;color:#f5f5f7')
+    }));
+    return {
+      setNormal: () => this.setState({ abo: false }),
+      setAbo: () => this.setState({ abo: true }),
+      normalStyle: tab + (abo ? 'color:#a1a1a6' : 'color:#fff'),
+      aboStyle: tab + (abo ? 'color:#fff' : 'color:#a1a1a6'),
+      pillStyle: 'position:absolute;top:6px;bottom:6px;left:6px;width:170px;border-radius:20px;background:#8a2140;transition:transform .45s cubic-bezier(.22,.61,.36,1);transform:translateX(' + (abo ? 170 : 0) + 'px)',
+      priceAnim: 'ds-pricein .4s cubic-bezier(.22,.61,.36,1) both',
+      offers
+    };
+  }
+}
+</script>
+<script src="features.js"></script>
+</body></html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="react.production.min.js"></script>
+<script src="react-dom.production.min.js"></script>
+<script src="dc-runtime.js"></script>
+<script src="cursor.js"></script>
+</head>
+<body>
+<div id="ds-loader" style="position:fixed;inset:0;z-index:999999;background:#8a2140;display:flex;align-items:center;justify-content:center;transition:opacity .6s ease,visibility .6s ease">
+<div style="position:relative;width:96px;height:96px;display:flex;align-items:center;justify-content:center">
+<div style="position:absolute;inset:0;border-radius:50%;border:3px solid rgba(243,237,230,.25);border-top-color:#f3ede6;animation:ds-spin .9s linear infinite"></div>
+<img src="logo.png" alt="DogSister" style="width:54px;height:54px;border-radius:50%;object-fit:cover">
+</div>
+</div>
+<x-dc>
+<helmet data-dc-atomics="">
+<style>
+html{scroll-snap-type:y proximity;scroll-padding-top:60px;scroll-behavior:smooth}
+body{margin:0;background:#ffffff;color:#1d1d1f;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#1d1d1f;text-decoration:none}a:hover{color:#8a2140}
+@keyframes ds-fadeup{from{opacity:0;transform:translateY(36px) scale(.98);filter:blur(8px)}to{opacity:1;transform:none;filter:none}}
+@keyframes ds-navin{from{opacity:0;transform:translateY(-100%)}to{opacity:1;transform:none}}
+@keyframes ds-spin{to{transform:rotate(360deg)}}
+@keyframes ds-float{0%,100%{transform:translateY(-8px) rotate(var(--ds-rot,0deg))}50%{transform:translateY(10px) rotate(var(--ds-rot,0deg))}}
+</style></helmet>
+
+<nav style="position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:40px;padding:0 48px;height:60px;background:transparent">
+<a href="Accueil.html" style="display:flex;align-items:center;gap:10px;font-size:19px;font-weight:700;letter-spacing:-.02em"><img src="logo.png" alt="DogSister" style="height:34px;width:34px;border-radius:50%;object-fit:cover">DogSister</a>
+<span style="flex:1"></span>
+<div style="display:flex;align-items:center;gap:32px;font-size:14px">
+<a href="Accueil.html" style="color:#6e6e73;transition:color .25s" style-hover="color:#1d1d1f">Accueil</a><a href="Services.html" style="color:#6e6e73;transition:color .25s" style-hover="color:#1d1d1f">Services &amp; Tarifs</a><a href="Activites.html" style="color:#6e6e73;transition:color .25s" style-hover="color:#1d1d1f">Activités</a><a href="Local.html" style="color:#6e6e73;transition:color .25s" style-hover="color:#1d1d1f">Le local</a><a href="A-propos.html" style="color:#6e6e73;transition:color .25s" style-hover="color:#1d1d1f">À propos</a><a href="Contact.html" style="color:#1d1d1f;font-weight:600;border-bottom:2px solid #8a2140;padding-bottom:2px;transition:color .25s" style-hover="color:#1d1d1f">Contact</a>
+</div>
+<a href="#reserver" style="background:#3d1522;color:#fff;font-size:14px;font-weight:500;padding:9px 24px;border-radius:22px;transition:background .25s" style-hover="background:#8a2140;color:#fff">Réserver</a>
+</nav>
+
+<header id="reserver" data-reveal="" data-screen-label="Réservation" style="box-sizing:border-box;min-height:100vh;scroll-snap-align:start;background:#3d1522;padding:72px 48px;display:flex;align-items:center;justify-content:center">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;width:min(1080px,100%);align-items:center">
+<div style="display:flex;flex-direction:column;gap:24px">
+<p style="margin:0;font-size:15px;font-weight:600;color:#f3c8d4;letter-spacing:.06em;text-transform:uppercase">Réservation</p>
+<h1 style="margin:0;font-size:56px;line-height:1.05;font-weight:700;letter-spacing:-.03em;text-wrap:balance;color:#fff">Réservez en 30 secondes.</h1>
+<p style="margin:0;font-size:20px;line-height:1.55;color:rgba(255,255,255,.75);text-wrap:pretty">Choisissez un service et un créneau — nous confirmons par chat, et vous payez en ligne en toute sécurité.</p>
+</div>
+<div style="background:#f3ede6;border-radius:24px;padding:40px;display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;flex-direction:column;gap:10px">
+<span style="font-size:14px;font-weight:600;color:#424245">Service</span>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<sc-for list="{{ services }}" as="s" hint-placeholder-count="3">
+<button type="button" sc-camel-on-click="{{ s.pick }}" style="{{ s.style }}">{{ s.label }}</button>
+</sc-for>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<span style="font-size:14px;font-weight:600;color:#424245">Créneau</span>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<sc-for list="{{ slots }}" as="c" hint-placeholder-count="4">
+<button type="button" sc-camel-on-click="{{ c.pick }}" style="{{ c.style }}">{{ c.label }}</button>
+</sc-for>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<span style="font-size:14px;font-weight:600;color:#424245">Récurrence</span>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<sc-for list="{{ recurs }}" as="r" hint-placeholder-count="3">
+<button type="button" sc-camel-on-click="{{ r.pick }}" style="{{ r.style }}">{{ r.label }}</button>
+</sc-for>
+</div>
+</div>
+<input placeholder="Votre nom" style="font-family:inherit;font-size:16px;padding:14px 18px;border-radius:12px;border:1px solid #d2d2d7;background:#fff;color:#1d1d1f;outline:none" style-focus="border-color:#8a2140">
+<input placeholder="Email ou téléphone" style="font-family:inherit;font-size:16px;padding:14px 18px;border-radius:12px;border:1px solid #d2d2d7;background:#fff;color:#1d1d1f;outline:none" style-focus="border-color:#8a2140">
+<button type="button" sc-camel-on-click="{{ submit }}" style="font-family:inherit;background:#8a2140;color:#fff;font-size:17px;font-weight:500;padding:14px 24px;border-radius:24px;border:none;cursor:pointer" style-hover="background:#6f1a33">{{ submitLabel }}</button>
+</div>
+</div>
+</header>
+
+<section data-reveal="" data-screen-label="Message" style="box-sizing:border-box;min-height:100vh;scroll-snap-align:start;background:#f3ede6;padding:96px 48px;display:flex;align-items:center;justify-content:center">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;width:min(1080px,100%);align-items:start">
+<div style="display:flex;flex-direction:column;gap:24px">
+<h2 style="margin:0;font-size:44px;font-weight:700;letter-spacing:-.02em;text-wrap:balance">Ou écrivez-nous.</h2>
+<p style="margin:0;font-size:19px;line-height:1.55;color:#6e6e73;text-wrap:pretty">Une situation particulière, un chien anxieux, une proposition d'activité pour le week-end ? Racontez-nous, nous répondons sous 24 h.</p>
+<div style="display:flex;flex-direction:column;gap:8px;font-size:16px;color:#424245">
+<p style="margin:0"><strong>Adresse</strong> — 28 rue Charles Bassée, Fontenay-sous-Bois 94120</p>
+<p style="margin:0"><strong>Horaires</strong> — 7j/7 · 24h/24</p>
+<p style="margin:0"><strong>Accès</strong> — RER A · dépôt sur place ou navette</p>
+</div>
+<a href="https://wa.me/" style="align-self:flex-start;display:inline-flex;align-items:center;gap:8px;background:#3d1522;color:#fff;font-size:15px;font-weight:500;padding:12px 26px;border-radius:24px" style-hover="background:#8a2140;color:#fff">Écrire sur WhatsApp</a>
+</div>
+<form style="background:#fff;border-radius:24px;padding:40px;display:flex;flex-direction:column;gap:16px">
+<input placeholder="Votre nom" style="font-family:inherit;font-size:16px;padding:14px 18px;border-radius:12px;border:1px solid #d2d2d7;background:#fff;color:#1d1d1f;outline:none" style-focus="border-color:#8a2140">
+<input placeholder="Email ou téléphone" style="font-family:inherit;font-size:16px;padding:14px 18px;border-radius:12px;border:1px solid #d2d2d7;background:#fff;color:#1d1d1f;outline:none" style-focus="border-color:#8a2140">
+<sc-raw-select style="font-family:inherit;font-size:16px;padding:14px 18px;border-radius:12px;border:1px solid #d2d2d7;background:#fff;color:#1d1d1f;outline:none">
+<option>Choisir un service</option><option>Garde à la journée</option><option>Garde la nuit</option><option>Package 24h</option><option>Service à l'heure</option><option>Balade à domicile</option><option>Proposer une activité (espace pro)</option></sc-raw-select>
+<textarea placeholder="Parlez-nous de votre chien (race, âge, caractère…)" rows="5" style="font-family:inherit;font-size:16px;padding:14px 18px;border-radius:12px;border:1px solid #d2d2d7;background:#fff;color:#1d1d1f;outline:none;resize:vertical" style-focus="border-color:#8a2140"></textarea>
+<button type="button" sc-camel-on-click="{{ msgSubmit }}" style="font-family:inherit;background:#3d1522;color:#fff;font-size:17px;font-weight:500;padding:14px 24px;border-radius:24px;border:none;cursor:pointer" style-hover="background:#8a2140">{{ msgLabel }}</button>
+</form>
+</div>
+</section>
+
+<footer style="background:#f3ede6;border-top:1px solid rgba(0,0,0,.08);padding:40px 48px;display:flex;align-items:center;gap:32px;font-size:13px;color:#6e6e73">
+<span style="display:flex;align-items:center;gap:8px;font-weight:700;color:#1d1d1f;font-size:15px"><img src="logo.png" alt="DogSister" style="height:26px;width:26px;border-radius:50%;object-fit:cover">DogSister</span>
+<span>Garde, promenades et éducation canine — Fontenay-sous-Bois, Île-de-France</span>
+<span style="flex:1"></span>
+<a href="Accueil.html" style="color:#6e6e73">Accueil</a><a href="Services.html" style="color:#6e6e73">Services</a><a href="Activites.html" style="color:#6e6e73">Activités</a><a href="Local.html" style="color:#6e6e73">Le local</a><a href="A-propos.html" style="color:#6e6e73">À propos</a>
+</footer>
+
+
+</x-dc>
+<script type="text/x-dc" data-dc-script="">
+class Component extends DCLogic {
+  state = { service: 'Garde journée', slot: '10h30', recur: 'Une seule fois', sent: false, msgSent: false };
+  componentDidMount() {
+    if (window.initCursor) window.initCursor();
+    const nav = document.querySelector('nav');
+    if (nav) nav.style.animation = 'ds-navin .7s cubic-bezier(.22,.61,.36,1) both';
+    document.querySelectorAll('[data-float]').forEach((el, i) => {
+      el.style.setProperty('--ds-rot', el.dataset.float || '0deg');
+      el.style.animation = 'ds-float ' + (4.5 + i * 0.9) + 's ease-in-out ' + (i * 0.7) + 's infinite';
+    });
+    const els = document.querySelectorAll('[data-reveal]');
+    const kidsOf = (el) => Array.from(el.children);
+    const reveal = (el) => {
+      let d = 0;
+      kidsOf(el).forEach((k) => {
+        k.style.opacity = '';
+        const disp = getComputedStyle(k).display;
+        const sub = (k.children.length >= 2 && (disp === 'grid' || disp === 'flex')) ? Array.from(k.children) : null;
+        if (sub) {
+          sub.forEach(s => {
+            s.style.animation = 'ds-fadeup .9s cubic-bezier(.22,.61,.36,1) ' + d.toFixed(2) + 's both';
+            d += 0.1;
+          });
+        } else {
+          k.style.animation = 'ds-fadeup .9s cubic-bezier(.22,.61,.36,1) ' + d.toFixed(2) + 's both';
+          d += 0.12;
+        }
+      });
+    };
+    const hide = (el) => kidsOf(el).forEach(k => { k.style.opacity = '0'; });
+    const io = ('IntersectionObserver' in window) ? new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { reveal(e.target); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 }) : null;
+    els.forEach(el => {
+      const r = el.getBoundingClientRect();
+      const visible = r.top < window.innerHeight && r.bottom > 0;
+      if (visible || !io) { reveal(el); }
+      else { hide(el); io.observe(el); }
+    });
+    this._fallback = setTimeout(() => els.forEach(el => kidsOf(el).forEach(k => {
+      if (k.style.opacity === '0') { k.style.opacity = ''; k.style.animation = 'ds-fadeup .9s both'; }
+    })), 1800);
+    this._io = io;
+  }
+  componentWillUnmount() { if (this._io) this._io.disconnect(); clearTimeout(this._fallback); }
+  chip(label, selected, onPick) {
+    const base = 'font-family:inherit;font-size:14px;font-weight:500;padding:9px 18px;border-radius:24px;cursor:pointer;';
+    return {
+      label,
+      pick: onPick,
+      style: selected
+        ? base + 'background:#8a2140;color:#fff;border:1px solid #8a2140'
+        : base + 'background:#fff;color:#1d1d1f;border:1px solid #d2d2d7'
+    };
+  }
+  renderVals() {
+    const services = ['Garde journée', 'Garde nuit', 'Package 24h', 'Balade'].map(s =>
+      this.chip(s, this.state.service === s, () => this.setState({ service: s, sent: false })));
+    const slots = ['9h', '10h30', '14h', '16h', '17h30'].map(c =>
+      this.chip(c, this.state.slot === c, () => this.setState({ slot: c, sent: false })));
+    const recurs = ['Une seule fois', 'Chaque semaine', 'Chaque mois'].map(r =>
+      this.chip(r, this.state.recur === r, () => this.setState({ recur: r, sent: false })));
+    const recurTxt = this.state.recur === 'Une seule fois' ? '' : ' · ' + this.state.recur.toLowerCase();
+    return {
+      services, slots, recurs,
+      submitLabel: this.state.sent ? 'Demande envoyée — on vous confirme par chat !' : 'Réserver ' + this.state.service.toLowerCase() + ' · ' + this.state.slot + recurTxt,
+      submit: () => this.setState({ sent: true }),
+      msgLabel: this.state.msgSent ? 'Message envoyé — à très vite !' : 'Envoyer le message',
+      msgSubmit: () => this.setState({ msgSent: true })
+    };
+  }
+}
+</script>
+<script src="features.js"></script>
+</body></html>
