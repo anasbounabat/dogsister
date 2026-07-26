@@ -452,12 +452,16 @@
   }
 
   // =======================================================================
-  // 6) Loader d'entrée : petit écran de chargement bordeaux avec le logo,
-  //    affiché brièvement à l'arrivée sur la page puis retiré en fondu.
+  // 6) Loader d'entrée : petit écran de chargement bordeaux avec le logo.
+  //    Affiché seulement à la première ouverture du site dans l'onglet
+  //    (un script inline, juste après le loader dans le HTML, le masque
+  //    instantanément via sessionStorage quand on navigue simplement d'une
+  //    page à l'autre). Ici on ne gère que le fondu de sortie du tout
+  //    premier affichage.
   // =======================================================================
   function initLoader() {
     var loader = document.getElementById('ds-loader');
-    if (!loader) return;
+    if (!loader || loader.style.display === 'none') return;
     setTimeout(function () {
       loader.style.opacity = '0';
       loader.style.visibility = 'hidden';

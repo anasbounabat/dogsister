@@ -14,6 +14,7 @@
 <img src="logo.png" alt="DogSister" style="width:54px;height:54px;border-radius:50%;object-fit:cover">
 </div>
 </div>
+<script>if (sessionStorage.getItem('ds_visited')) { document.getElementById('ds-loader').style.display = 'none'; } else { sessionStorage.setItem('ds_visited', '1'); }</script>
 <x-dc>
 <helmet data-dc-atomics="">
 <style>
@@ -30,7 +31,7 @@ a{color:#1d1d1f;text-decoration:none}a:hover{color:#8a2140}
 <a href="index.html" style="display:flex;align-items:center;gap:10px;font-size:19px;font-weight:700;letter-spacing:-.02em"><img src="logo.png" alt="DogSister" style="height:34px;width:34px;border-radius:50%;object-fit:cover">DogSister</a>
 <span style="flex:1"></span>
 <div style="display:flex;align-items:center;gap:32px;font-size:14px">
-<a href="index.html" style="color:#1d1d1f;transition:color .25s" style-hover="color:#1d1d1f">Accueil</a><a href="Services.html" style="color:#1d1d1f;transition:color .25s" style-hover="color:#1d1d1f">Services &amp; Tarifs</a><a href="Activites.html" style="color:#1d1d1f;transition:color .25s" style-hover="color:#1d1d1f">Activités</a><a href="Local.html" style="color:#1d1d1f;font-weight:600;border-bottom:2px solid #8a2140;padding-bottom:2px;transition:color .25s" style-hover="color:#1d1d1f">Le local</a><a href="A-propos.html" style="color:#1d1d1f;transition:color .25s" style-hover="color:#1d1d1f">À propos</a><a href="Contact.html" style="color:#1d1d1f;transition:color .25s" style-hover="color:#1d1d1f">Contact</a>
+<a href="index.html" style="color:#1d1d1f;transition:color .25s" style-hover="color:#8a2140">Accueil</a><a href="Services.html" style="color:#1d1d1f;transition:color .25s" style-hover="color:#8a2140">Services &amp; Tarifs</a><a href="Activites.html" style="color:#1d1d1f;transition:color .25s" style-hover="color:#8a2140">Activités</a><a href="Local.html" style="color:#1d1d1f;font-weight:600;border-bottom:2px solid #8a2140;padding-bottom:2px;transition:color .25s" style-hover="color:#8a2140">Le local</a><a href="A-propos.html" style="color:#1d1d1f;transition:color .25s" style-hover="color:#8a2140">À propos</a><a href="Contact.html" style="color:#1d1d1f;transition:color .25s" style-hover="color:#8a2140">Contact</a>
 </div>
 <a href="Contact.html" style="background:#3d1522;color:#fff;font-size:14px;font-weight:500;padding:9px 24px;border-radius:22px;transition:background .25s" style-hover="background:#8a2140;color:#fff">Réserver</a>
 </nav>
@@ -39,7 +40,7 @@ a{color:#1d1d1f;text-decoration:none}a:hover{color:#8a2140}
 <p style="margin:0;font-size:15px;font-weight:600;color:#8a2140;letter-spacing:.06em;text-transform:uppercase">Le local — Fontenay-sous-Bois</p>
 <h1 style="margin:0;font-size:60px;line-height:1.05;font-weight:700;letter-spacing:-.03em;max-width:760px;text-wrap:balance">Un lieu entièrement pensé pour eux.</h1>
 <p style="margin:0;font-size:21px;line-height:1.5;color:#6e6e73;max-width:560px;text-wrap:pretty">Espace de jeu, coin repos et balades quotidiennes au bois de Vincennes : bienvenue dans la maison de DogSister, au 28 rue Charles Bassée.</p>
-<div style="display:grid;grid-template-columns:2fr 1fr;grid-template-rows:200px 200px;gap:24px;width:min(1080px,100%);margin-top:16px">
+<div style="display:grid;grid-template-columns:2fr 1fr;grid-template-rows:130px 130px;gap:16px;width:min(900px,100%);margin-top:12px">
 <div style="grid-row:1/-1;border-radius:24px;background:repeating-linear-gradient(45deg,#f5f0ec,#f5f0ec 14px,#efe7e0 14px,#efe7e0 28px);display:flex;align-items:center;justify-content:center;color:#a08874;font-family:ui-monospace,Menlo,monospace;font-size:12px">photo — grand espace de jeu</div>
 <div style="border-radius:24px;background:repeating-linear-gradient(45deg,#f5f0ec,#f5f0ec 14px,#efe7e0 14px,#efe7e0 28px);display:flex;align-items:center;justify-content:center;color:#a08874;font-family:ui-monospace,Menlo,monospace;font-size:12px">photo — coin repos</div>
 <div style="border-radius:24px;background:repeating-linear-gradient(45deg,#f5f0ec,#f5f0ec 14px,#efe7e0 14px,#efe7e0 28px);display:flex;align-items:center;justify-content:center;color:#a08874;font-family:ui-monospace,Menlo,monospace;font-size:12px">photo — devanture</div>
