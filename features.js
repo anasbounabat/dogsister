@@ -89,7 +89,10 @@
     '.ds-resa-confirm h3{margin:0;font-size:22px;font-weight:700}' +
     '.ds-resa-confirm p{margin:0;font-size:15px;line-height:1.5;color:rgba(255,255,255,.85)}' +
     '.ds-resa-confirm button{align-self:flex-start;background:#fff;color:' + COLOR_BORDEAUX + ';border:none;font-size:14px;font-weight:600;' +
-      'padding:11px 22px;border-radius:22px;cursor:pointer;margin-top:6px}'
+      'padding:11px 22px;border-radius:22px;cursor:pointer;margin-top:6px}' +
+
+    'nav.ds-nav-scrolled{background:rgba(255,255,255,.85) !important;backdrop-filter:saturate(180%) blur(20px);' +
+      '-webkit-backdrop-filter:saturate(180%) blur(20px);box-shadow:0 1px 0 rgba(0,0,0,.07)}'
   );
 
   function initAll() {
@@ -98,6 +101,21 @@
     initChat();
     initReservation();
     initLocalVideoParallax();
+    initNavScroll();
+  }
+
+  // =======================================================================
+  // 7) Nav transparente en haut de page, qui redevient blanche/floutée dès
+  //    qu'on scrolle un peu (lisible au-dessus de n'importe quel contenu).
+  // =======================================================================
+  function initNavScroll() {
+    var nav = document.querySelector('nav');
+    if (!nav) return;
+    function update() {
+      nav.classList.toggle('ds-nav-scrolled', window.scrollY > 20);
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    update();
   }
   // Ce script est ré-exécuté par le "bundler" du site après que le vrai
   // contenu de la page a déjà été inséré dans le DOM (bien après le
