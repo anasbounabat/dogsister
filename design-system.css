@@ -58,9 +58,9 @@
 
   /* — Typographie — */
   --ds-font:'Inter',system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
-  --ds-text-hero:clamp(2.5rem,1.6rem + 3.6vw,4.75rem);
-  --ds-text-section:clamp(2rem,1.5rem + 2vw,3.25rem);
-  --ds-text-subtitle:clamp(1.25rem,1.1rem + .6vw,1.75rem);
+  --ds-text-hero:clamp(2.25rem,1.5rem + 3vw,4rem);
+  --ds-text-section:clamp(1.75rem,1.4rem + 1.6vw,2.75rem);
+  --ds-text-subtitle:clamp(1.15rem,1.05rem + .5vw,1.5rem);
   --ds-text-body:18px;
   --ds-text-small:16px;
   --ds-text-btn:17px;
@@ -153,14 +153,19 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 }
 
 /* — Nav façon Apple : logo à gauche, liens centrés dans l'espace restant,
-   actions à droite — même structure à 3 zones que apple.com, fond blanc — */
+   actions à droite — même structure à 3 zones que apple.com, verre flouté — */
 .ds-nav{
   position:sticky;
   top:0;
   z-index:50;
-  background:var(--ds-white);
+  background:rgba(255,255,255,.72);
+  backdrop-filter:saturate(180%) blur(20px);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);
   border-bottom:1px solid var(--ds-hairline);
-  transition:box-shadow var(--ds-dur-1) ease,backdrop-filter var(--ds-dur-1) ease;
+  transition:background var(--ds-dur-1) ease,box-shadow var(--ds-dur-1) ease;
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))){
+  .ds-nav{background:var(--ds-white);}
 }
 .ds-nav-inner{
   display:flex;
