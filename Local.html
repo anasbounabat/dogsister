@@ -2,15 +2,19 @@
 <html><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="design-system.css">
 <script src="react.production.min.js"></script>
 <script src="react-dom.production.min.js"></script>
 <script src="dc-runtime.js"></script>
 <script src="cursor.js"></script>
 </head>
 <body>
-<div id="ds-loader" style="position:fixed;inset:0;z-index:999999;background:#8a2140;display:flex;align-items:center;justify-content:center;transition:opacity .6s ease,visibility .6s ease">
+<div id="ds-loader" style="position:fixed;inset:0;z-index:999999;background:var(--ds-accent,#1d1d1f);display:flex;align-items:center;justify-content:center;transition:opacity .6s ease,visibility .6s ease">
 <div style="position:relative;width:96px;height:96px;display:flex;align-items:center;justify-content:center">
-<div style="position:absolute;inset:0;border-radius:50%;border:3px solid rgba(243,237,230,.25);border-top-color:#f3ede6;animation:ds-spin .9s linear infinite"></div>
+<div style="position:absolute;inset:0;border-radius:50%;border:3px solid rgba(255,255,255,.25);border-top-color:var(--ds-surface-tint,#f5f5f7);animation:ds-spin .9s linear infinite"></div>
 <img src="logo.png" alt="DogSister" style="width:54px;height:54px;border-radius:50%;object-fit:cover">
 </div>
 </div>
@@ -19,75 +23,79 @@
 <helmet data-dc-atomics="">
 <style>
 html{scroll-snap-type:y proximity;scroll-padding-top:60px;scroll-behavior:smooth}
-body{margin:0;background:#ffffff;color:#1d1d1f;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
-a{color:#1d1d1f;text-decoration:none}a:hover{color:#8a2140}
+body{margin:0;background:var(--ds-white);color:var(--ds-ink);font-family:var(--ds-font);-webkit-font-smoothing:antialiased}
+a{color:var(--ds-ink);text-decoration:none}a:hover{color:var(--ds-accent)}
 @keyframes ds-fadeup{from{opacity:0;transform:translateY(36px) scale(.98);filter:blur(8px)}to{opacity:1;transform:none;filter:none}}
 @keyframes ds-navin{from{opacity:0;transform:translateY(-100%)}to{opacity:1;transform:none}}
 @keyframes ds-spin{to{transform:rotate(360deg)}}
 @keyframes ds-float{0%,100%{transform:translateY(-8px) rotate(var(--ds-rot,0deg))}50%{transform:translateY(10px) rotate(var(--ds-rot,0deg))}}
 </style></helmet>
 
-<nav style="position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:40px;padding:0 48px;height:60px;background:transparent;transition:background .3s ease,backdrop-filter .3s ease,box-shadow .3s ease">
-<a href="index.html" style="display:flex;align-items:center;gap:10px;font-size:19px;font-weight:700;letter-spacing:-.02em"><img src="logo.png" alt="DogSister" style="height:34px;width:34px;border-radius:50%;object-fit:cover">DogSister</a>
-<span style="flex:1"></span>
-<div style="display:flex;align-items:center;gap:32px;font-size:14px">
-<a href="index.html" style="color:#1d1d1f;transition:color .25s" style-hover="color:#8a2140">Accueil</a><a href="Services.html" style="color:#1d1d1f;transition:color .25s" style-hover="color:#8a2140">Services &amp; Tarifs</a><a href="Activites.html" style="color:#1d1d1f;transition:color .25s" style-hover="color:#8a2140">Activités</a><a href="Local.html" style="color:#1d1d1f;font-weight:600;border-bottom:2px solid #8a2140;padding-bottom:2px;transition:color .25s" style-hover="color:#8a2140">Le local</a><a href="A-propos.html" style="color:#1d1d1f;transition:color .25s" style-hover="color:#8a2140">À propos</a><a href="Contact.html" style="color:#1d1d1f;transition:color .25s" style-hover="color:#8a2140">Contact</a>
+<nav class="ds-nav">
+<div class="ds-nav-inner">
+<a href="index.html" class="ds-nav-logo"><img src="logo.png" alt="DogSister" style="height:22px;width:22px;border-radius:50%;object-fit:cover">DogSister</a>
+<div class="ds-nav-links">
+<a href="index.html">Accueil</a><a href="Services.html">Services &amp; Tarifs</a><a href="Activites.html">Activités</a><a href="Local.html" aria-current="page">Le local</a><a href="A-propos.html">À propos</a><a href="Contact.html">Contact</a>
 </div>
-<a href="Contact.html" style="background:#3d1522;color:#fff;font-size:14px;font-weight:500;padding:9px 24px;border-radius:22px;transition:background .25s" style-hover="background:#8a2140;color:#fff">Réserver</a>
+<div class="ds-nav-right">
+<a href="Contact.html" style="background:var(--ds-accent);color:var(--ds-white);font-size:var(--ds-text-btn-sm);font-weight:500;padding:var(--ds-btn-py-sm) var(--ds-btn-px-sm);border-radius:var(--ds-radius-pill);transition:background var(--ds-dur-1),transform var(--ds-dur-1)" style-hover="background:var(--ds-accent-hover);color:var(--ds-white);transform:translateY(-1px)">Réserver</a>
+<button type="button" class="ds-nav-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</div>
+</div>
 </nav>
 
-<header data-reveal="" data-screen-label="Local hero" style="box-sizing:border-box;min-height:100vh;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:24px;padding:48px 24px;background:#eae2d6">
-<p style="margin:0;font-size:15px;font-weight:600;color:#8a2140;letter-spacing:.06em;text-transform:uppercase">Le local — Fontenay-sous-Bois</p>
-<h1 style="margin:0;font-size:60px;line-height:1.05;font-weight:700;letter-spacing:-.03em;max-width:760px;text-wrap:balance">Un lieu entièrement pensé pour eux.</h1>
-<p style="margin:0;font-size:21px;line-height:1.5;color:#6e6e73;max-width:560px;text-wrap:pretty">Espace de jeu, coin repos et balades quotidiennes au bois de Vincennes : bienvenue dans la maison de DogSister, au 28 rue Charles Bassée.</p>
-<div style="display:grid;grid-template-columns:2fr 1fr;grid-template-rows:130px 130px;gap:16px;width:min(900px,100%);margin-top:12px">
-<div style="grid-row:1/-1;border-radius:24px;background:repeating-linear-gradient(45deg,#f5f0ec,#f5f0ec 14px,#efe7e0 14px,#efe7e0 28px);display:flex;align-items:center;justify-content:center;color:#a08874;font-family:ui-monospace,Menlo,monospace;font-size:12px">photo — grand espace de jeu</div>
-<div style="border-radius:24px;background:repeating-linear-gradient(45deg,#f5f0ec,#f5f0ec 14px,#efe7e0 14px,#efe7e0 28px);display:flex;align-items:center;justify-content:center;color:#a08874;font-family:ui-monospace,Menlo,monospace;font-size:12px">photo — coin repos</div>
-<div style="border-radius:24px;background:repeating-linear-gradient(45deg,#f5f0ec,#f5f0ec 14px,#efe7e0 14px,#efe7e0 28px);display:flex;align-items:center;justify-content:center;color:#a08874;font-family:ui-monospace,Menlo,monospace;font-size:12px">photo — devanture</div>
+<header data-reveal="" data-screen-label="Local hero" class="ds-section" style="box-sizing:border-box;position:relative;min-height:100vh;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:var(--ds-space-3);background:var(--ds-surface-tint);overflow:hidden">
+<p style="position:relative;z-index:1;margin:0;font-size:var(--ds-text-eyebrow);font-weight:600;color:var(--ds-accent);letter-spacing:.06em;text-transform:uppercase">Le local — Fontenay-sous-Bois</p>
+<h1 class="ds-hero-title" style="position:relative;z-index:1;margin:0;max-width:760px;text-wrap:balance">Un lieu entièrement pensé pour eux.</h1>
+<p class="ds-subtitle" style="position:relative;z-index:1;margin:0;color:var(--ds-ink-muted);max-width:560px;text-wrap:pretty">Espace de jeu, coin repos et balades quotidiennes au bois de Vincennes : bienvenue dans la maison de DogSister, au 28 rue Charles Bassée.</p>
+<div class="ds-mosaic-hero" style="position:relative;z-index:1;gap:var(--ds-space-2);width:min(900px,100%);margin-top:12px">
+<div style="grid-row:1/-1;border-radius:var(--ds-radius-image);background:repeating-linear-gradient(45deg,var(--ds-surface),var(--ds-surface) 14px,var(--ds-gray-200) 14px,var(--ds-gray-200) 28px);box-shadow:var(--ds-shadow-sm);display:flex;align-items:center;justify-content:center;color:var(--ds-ink-faint);font-family:ui-monospace,Menlo,monospace;font-size:12px">photo — grand espace de jeu</div>
+<div style="border-radius:var(--ds-radius-image);background:repeating-linear-gradient(45deg,var(--ds-surface),var(--ds-surface) 14px,var(--ds-gray-200) 14px,var(--ds-gray-200) 28px);box-shadow:var(--ds-shadow-sm);display:flex;align-items:center;justify-content:center;color:var(--ds-ink-faint);font-family:ui-monospace,Menlo,monospace;font-size:12px">photo — coin repos</div>
+<div style="border-radius:var(--ds-radius-image);background:repeating-linear-gradient(45deg,var(--ds-surface),var(--ds-surface) 14px,var(--ds-gray-200) 14px,var(--ds-gray-200) 28px);box-shadow:var(--ds-shadow-sm);display:flex;align-items:center;justify-content:center;color:var(--ds-ink-faint);font-family:ui-monospace,Menlo,monospace;font-size:12px">photo — devanture</div>
 </div>
 </header>
 
-<section data-reveal="" data-screen-label="Les espaces" style="box-sizing:border-box;min-height:100vh;scroll-snap-align:start;background:#f3ede6;padding:96px 48px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:48px">
-<h2 style="margin:0;font-size:44px;font-weight:700;letter-spacing:-.02em">Trois espaces, une même attention.</h2>
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;width:min(1180px,100%)">
-<article style="background:#fff;border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:12px">
-<p style="margin:0;font-size:13px;font-weight:600;color:#8a2140;letter-spacing:.06em;text-transform:uppercase">Jeu</p>
+<section data-reveal="" data-screen-label="Les espaces" class="ds-section" style="box-sizing:border-box;min-height:100vh;scroll-snap-align:start;background:var(--ds-white);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--ds-space-5)">
+<h2 class="ds-section-title" style="margin:0">Trois espaces, une même attention.</h2>
+<div class="ds-grid-3" style="gap:var(--ds-space-3);width:min(1180px,100%)">
+<article style="background:var(--ds-surface-tint);border-radius:var(--ds-radius-card);padding:var(--ds-space-4);display:flex;flex-direction:column;gap:12px">
+<p style="margin:0;font-size:13px;font-weight:600;color:var(--ds-accent);letter-spacing:.06em;text-transform:uppercase">Jeu</p>
 <h3 style="margin:0;font-size:22px;font-weight:700">L'espace de jeu</h3>
-<p style="margin:0;font-size:16px;line-height:1.55;color:#6e6e73;text-wrap:pretty">Sol adapté, jouets renouvelés, petits groupes compatibles. C'est ici que se passent les journées.</p>
+<p style="margin:0;font-size:var(--ds-text-small);line-height:1.55;color:var(--ds-ink-muted);text-wrap:pretty">Sol adapté, jouets renouvelés, petits groupes compatibles. C'est ici que se passent les journées.</p>
 </article>
-<article style="background:#fff;border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:12px">
-<p style="margin:0;font-size:13px;font-weight:600;color:#8a2140;letter-spacing:.06em;text-transform:uppercase">Repos</p>
+<article style="background:var(--ds-surface-tint);border-radius:var(--ds-radius-card);padding:var(--ds-space-4);display:flex;flex-direction:column;gap:12px">
+<p style="margin:0;font-size:13px;font-weight:600;color:var(--ds-accent);letter-spacing:.06em;text-transform:uppercase">Repos</p>
 <h3 style="margin:0;font-size:22px;font-weight:700">Le coin calme</h3>
-<p style="margin:0;font-size:16px;line-height:1.55;color:#6e6e73;text-wrap:pretty">Paniers, lumière douce, silence. Chaque chien a son rythme, et son coin à lui pour la sieste.</p>
+<p style="margin:0;font-size:var(--ds-text-small);line-height:1.55;color:var(--ds-ink-muted);text-wrap:pretty">Paniers, lumière douce, silence. Chaque chien a son rythme, et son coin à lui pour la sieste.</p>
 </article>
-<article style="background:#fff;border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:12px">
-<p style="margin:0;font-size:13px;font-weight:600;color:#8a2140;letter-spacing:.06em;text-transform:uppercase">Atelier</p>
+<article style="background:var(--ds-surface-tint);border-radius:var(--ds-radius-card);padding:var(--ds-space-4);display:flex;flex-direction:column;gap:12px">
+<p style="margin:0;font-size:13px;font-weight:600;color:var(--ds-accent);letter-spacing:.06em;text-transform:uppercase">Atelier</p>
 <h3 style="margin:0;font-size:22px;font-weight:700">L'atelier du week-end</h3>
-<p style="margin:0;font-size:16px;line-height:1.55;color:#6e6e73;text-wrap:pretty">Grandes tables, matériel créatif : couture, céramique et les activités proposées par la communauté.</p>
+<p style="margin:0;font-size:var(--ds-text-small);line-height:1.55;color:var(--ds-ink-muted);text-wrap:pretty">Grandes tables, matériel créatif : couture, céramique et les activités proposées par la communauté.</p>
 </article>
 </div>
 </section>
 
-<section data-reveal="" data-screen-label="Accès" style="box-sizing:border-box;min-height:100vh;scroll-snap-align:start;background:#ffffff;padding:96px 48px;display:flex;align-items:center;justify-content:center">
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;width:min(1080px,100%);align-items:center">
-<div style="display:flex;flex-direction:column;gap:24px">
-<h2 style="margin:0;font-size:44px;font-weight:700;letter-spacing:-.02em">Nous trouver</h2>
-<div style="display:flex;flex-direction:column;gap:12px;font-size:17px;line-height:1.5;color:#424245">
+<section data-reveal="" data-screen-label="Accès" class="ds-section" style="box-sizing:border-box;min-height:100vh;scroll-snap-align:start;background:var(--ds-surface-tint);display:flex;align-items:center;justify-content:center">
+<div class="ds-grid-2" style="gap:var(--ds-space-6);width:min(1080px,100%);align-items:center">
+<div style="display:flex;flex-direction:column;gap:var(--ds-space-3)">
+<h2 class="ds-section-title" style="margin:0">Nous trouver</h2>
+<div style="display:flex;flex-direction:column;gap:12px;font-size:17px;line-height:1.5;color:var(--ds-ink)">
 <p style="margin:0"><strong>Adresse</strong> — bientôt dévoilée, Île-de-France</p>
 <p style="margin:0"><strong>Horaires</strong> — lundi à samedi · 8h à 19h</p>
 <p style="margin:0"><strong>Week-end</strong> — ateliers sur réservation</p>
 </div>
-<a href="Contact.html" style="align-self:flex-start;background:#8a2140;color:#fff;font-size:16px;font-weight:500;padding:13px 30px;border-radius:24px" style-hover="background:#6f1a33;color:#fff">Venir nous rencontrer</a>
+<a href="Contact.html" style="align-self:flex-start;background:var(--ds-accent);color:var(--ds-white);font-size:var(--ds-text-small);font-weight:500;padding:13px 30px;border-radius:var(--ds-radius-pill);transition:background var(--ds-dur-1),transform var(--ds-dur-1)" style-hover="background:var(--ds-accent-hover);color:var(--ds-white);transform:translateY(-2px)">Venir nous rencontrer</a>
 </div>
-<div style="height:480px;border-radius:24px;background:repeating-linear-gradient(45deg,#f5f0ec,#f5f0ec 14px,#efe7e0 14px,#efe7e0 28px);display:flex;align-items:center;justify-content:center;color:#a08874;font-family:ui-monospace,Menlo,monospace;font-size:12px">carte — plan d'accès au local</div>
+<div style="height:480px;border-radius:var(--ds-radius-image);background:repeating-linear-gradient(45deg,var(--ds-surface),var(--ds-surface) 14px,var(--ds-gray-200) 14px,var(--ds-gray-200) 28px);box-shadow:var(--ds-shadow-sm);display:flex;align-items:center;justify-content:center;color:var(--ds-ink-faint);font-family:ui-monospace,Menlo,monospace;font-size:12px">carte — plan d'accès au local</div>
 </div>
 </section>
 
-<footer style="background:#f3ede6;border-top:1px solid rgba(0,0,0,.08);padding:40px 48px;display:flex;align-items:center;gap:32px;font-size:13px;color:#6e6e73">
-<span style="display:flex;align-items:center;gap:8px;font-weight:700;color:#1d1d1f;font-size:15px"><img src="logo.png" alt="DogSister" style="height:26px;width:26px;border-radius:50%;object-fit:cover">DogSister</span>
+<footer style="background:var(--ds-surface-tint);border-top:1px solid var(--ds-hairline);padding:var(--ds-space-4) var(--ds-space-5);display:flex;align-items:center;gap:var(--ds-space-4);font-size:13px;color:var(--ds-ink-muted);flex-wrap:wrap">
+<span style="display:flex;align-items:center;gap:8px;font-weight:700;color:var(--ds-ink);font-size:15px"><img src="logo.png" alt="DogSister" style="height:26px;width:26px;border-radius:50%;object-fit:cover">DogSister</span>
 <span>Garde, promenades et éducation canine — Fontenay-sous-Bois, Île-de-France</span>
 <span style="flex:1"></span>
-<a href="index.html" style="color:#6e6e73">Accueil</a><a href="Services.html" style="color:#6e6e73">Services</a><a href="Activites.html" style="color:#6e6e73">Activités</a><a href="A-propos.html" style="color:#6e6e73">À propos</a><a href="Contact.html" style="color:#6e6e73">Contact</a>
+<a href="index.html" style="color:var(--ds-ink-muted)">Accueil</a><a href="Services.html" style="color:var(--ds-ink-muted)">Services</a><a href="Activites.html" style="color:var(--ds-ink-muted)">Activités</a><a href="A-propos.html" style="color:var(--ds-ink-muted)">À propos</a><a href="Contact.html" style="color:var(--ds-ink-muted)">Contact</a>
 </footer>
 
 
@@ -97,7 +105,7 @@ class Component extends DCLogic {
   componentDidMount() {
     if (window.initCursor) window.initCursor();
     const nav = document.querySelector('nav');
-    if (nav) nav.style.animation = 'ds-navin .7s cubic-bezier(.22,.61,.36,1) both';
+    if (nav) nav.style.animation = 'ds-navin .7s cubic-bezier(.22,1,.36,1) both';
     document.querySelectorAll('[data-float]').forEach((el, i) => {
       el.style.setProperty('--ds-rot', el.dataset.float || '0deg');
       el.style.animation = 'ds-float ' + (4.5 + i * 0.9) + 's ease-in-out ' + (i * 0.7) + 's infinite';
@@ -112,11 +120,11 @@ class Component extends DCLogic {
         const sub = (k.children.length >= 2 && (disp === 'grid' || disp === 'flex')) ? Array.from(k.children) : null;
         if (sub) {
           sub.forEach(s => {
-            s.style.animation = 'ds-fadeup .9s cubic-bezier(.22,.61,.36,1) ' + d.toFixed(2) + 's both';
+            s.style.animation = 'ds-fadeup .9s cubic-bezier(.22,1,.36,1) ' + d.toFixed(2) + 's both';
             d += 0.1;
           });
         } else {
-          k.style.animation = 'ds-fadeup .9s cubic-bezier(.22,.61,.36,1) ' + d.toFixed(2) + 's both';
+          k.style.animation = 'ds-fadeup .9s cubic-bezier(.22,1,.36,1) ' + d.toFixed(2) + 's both';
           d += 0.12;
         }
       });

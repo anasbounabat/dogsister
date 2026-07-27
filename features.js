@@ -8,10 +8,11 @@
 (function () {
   'use strict';
 
-  var COLOR_BORDEAUX = '#8a2140';
-  var COLOR_BORDEAUX_DARK = '#701a33';
-  var COLOR_CREAM = '#f3ede6';
-  var EASE = 'cubic-bezier(.22,.61,.36,1)';
+  var COLOR_ACCENT = '#1d1d1f';
+  var COLOR_ACCENT_DARK = '#424245';
+  var COLOR_SURFACE = '#f8f8f8';
+  var COLOR_DARK = '#1d1d1f';
+  var EASE = 'cubic-bezier(.22,1,.36,1)';
 
   // ---------------------------------------------------------------------
   // Utilitaires localStorage (lecture/écriture JSON défensives)
@@ -51,48 +52,49 @@
   injectStyle(
     '@keyframes ds-chat-in{from{opacity:0;transform:translateY(20px) scale(.96)}to{opacity:1;transform:none}}' +
     '@keyframes ds-typing{0%,100%{opacity:.25}50%{opacity:1}}' +
-    '.ds-chat-fab{position:fixed;right:24px;bottom:24px;width:60px;height:60px;border-radius:24px;background:' + COLOR_BORDEAUX + ';' +
+    '.ds-chat-fab{position:fixed;right:24px;bottom:24px;width:60px;height:60px;border-radius:24px;background:' + COLOR_ACCENT + ';' +
       'display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;box-shadow:0 12px 32px rgba(0,0,0,.25);' +
       'z-index:9998;transition:transform .25s ' + EASE + ',background .25s}' +
-    '.ds-chat-fab:hover{background:' + COLOR_BORDEAUX_DARK + ';transform:translateY(-2px)}' +
-    '.ds-chat-badge{position:absolute;top:-4px;right:-4px;min-width:20px;height:20px;padding:0 5px;border-radius:10px;background:#fff;color:' + COLOR_BORDEAUX + ';font:700 12px/20px -apple-system,sans-serif;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,.25)}' +
+    '.ds-chat-fab:hover{background:' + COLOR_ACCENT_DARK + ';transform:translateY(-2px)}' +
+    '.ds-chat-badge{position:absolute;top:-4px;right:-4px;min-width:20px;height:20px;padding:0 5px;border-radius:10px;background:#fff;color:' + COLOR_ACCENT + ';font:700 12px/20px -apple-system,sans-serif;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,.25)}' +
     '.ds-chat-panel{position:fixed;right:24px;bottom:96px;width:min(340px,calc(100vw - 32px));max-height:min(480px,calc(100vh - 140px));' +
-      'background:' + COLOR_CREAM + ';border-radius:24px;box-shadow:0 24px 60px rgba(0,0,0,.3);display:flex;flex-direction:column;overflow:hidden;' +
+      'background:' + COLOR_SURFACE + ';border-radius:28px;box-shadow:0 24px 60px rgba(0,0,0,.3);display:flex;flex-direction:column;overflow:hidden;' +
       'z-index:9999;opacity:0;transform:translateY(16px) scale(.97);pointer-events:none;transition:opacity .3s ' + EASE + ',transform .3s ' + EASE + '}' +
     '.ds-chat-panel.ds-open{opacity:1;transform:none;pointer-events:auto;animation:ds-chat-in .3s ' + EASE + '}' +
-    '.ds-chat-head{background:' + COLOR_BORDEAUX + ';color:#fff;padding:16px 18px;display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px}' +
+    '.ds-chat-head{background:' + COLOR_DARK + ';color:#fff;padding:16px 18px;display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px}' +
     '.ds-chat-head span{flex:1}' +
     '.ds-chat-close{background:rgba(255,255,255,.18);border:none;color:#fff;width:28px;height:28px;border-radius:14px;cursor:pointer;font-size:15px;line-height:1}' +
     '.ds-chat-close:hover{background:rgba(255,255,255,.32)}' +
     '.ds-chat-body{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;min-height:180px}' +
     '.ds-msg{max-width:80%;padding:10px 14px;border-radius:18px;font-size:14px;line-height:1.4;word-wrap:break-word}' +
     '.ds-msg-pro{align-self:flex-start;background:#fff;color:#1d1d1f;border-bottom-left-radius:4px}' +
-    '.ds-msg-client{align-self:flex-end;background:' + COLOR_BORDEAUX + ';color:#fff;border-bottom-right-radius:4px}' +
+    '.ds-msg-client{align-self:flex-end;background:' + COLOR_ACCENT + ';color:#fff;border-bottom-right-radius:4px}' +
     '.ds-msg-typing span{display:inline-block;width:6px;height:6px;margin:0 1px;border-radius:50%;background:#8a8a8e;animation:ds-typing 1s infinite}' +
     '.ds-msg-typing span:nth-child(2){animation-delay:.15s}.ds-msg-typing span:nth-child(3){animation-delay:.3s}' +
     '.ds-chat-form{display:flex;gap:8px;padding:12px;border-top:1px solid rgba(0,0,0,.08);background:#fff}' +
     '.ds-chat-input{flex:1;font-family:inherit;font-size:14px;padding:10px 14px;border-radius:24px;border:1px solid #d2d2d7;outline:none}' +
-    '.ds-chat-input:focus{border-color:' + COLOR_BORDEAUX + '}' +
-    '.ds-chat-send{background:' + COLOR_BORDEAUX + ';color:#fff;border:none;width:40px;height:40px;border-radius:20px;cursor:pointer;font-size:15px;flex-shrink:0}' +
-    '.ds-chat-send:hover{background:' + COLOR_BORDEAUX_DARK + '}' +
+    '.ds-chat-input:focus{border-color:' + COLOR_ACCENT + '}' +
+    '.ds-chat-send{background:' + COLOR_ACCENT + ';color:#fff;border:none;width:40px;height:40px;border-radius:20px;cursor:pointer;font-size:15px;flex-shrink:0}' +
+    '.ds-chat-send:hover{background:' + COLOR_ACCENT_DARK + '}' +
     '@media (max-width:480px){.ds-chat-fab{right:16px;bottom:16px}.ds-chat-panel{right:16px;bottom:88px}}' +
 
-    '.ds-abo-badge{display:none;align-items:center;background:' + COLOR_BORDEAUX + ';color:#fff;font-size:12px;font-weight:600;' +
+    '.ds-abo-badge{display:none;align-items:center;background:' + COLOR_ACCENT + ';color:#fff;font-size:12px;font-weight:600;' +
       'padding:5px 12px;border-radius:14px;margin-right:8px;letter-spacing:.02em;white-space:nowrap}' +
 
     '.ds-field{display:flex;flex-direction:column;gap:7px}' +
     '.ds-field label{font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#a1a1a6}' +
     '.ds-field input[type=date]{font-family:inherit;font-size:15px;padding:12px 0;border:none;border-bottom:1px solid #48484a;background:transparent;color:#f5f5f7;outline:none}' +
 
-    '.ds-resa-confirm{background:' + COLOR_BORDEAUX + ';border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:14px;' +
+    '.ds-resa-confirm{background:' + COLOR_DARK + ';border-radius:28px;padding:32px;display:flex;flex-direction:column;gap:14px;' +
       'color:#fff;box-shadow:0 24px 60px rgba(0,0,0,.35);animation:ds-chat-in .4s ' + EASE + '}' +
     '.ds-resa-confirm h3{margin:0;font-size:22px;font-weight:700}' +
     '.ds-resa-confirm p{margin:0;font-size:15px;line-height:1.5;color:rgba(255,255,255,.85)}' +
-    '.ds-resa-confirm button{align-self:flex-start;background:#fff;color:' + COLOR_BORDEAUX + ';border:none;font-size:14px;font-weight:600;' +
-      'padding:11px 22px;border-radius:22px;cursor:pointer;margin-top:6px}' +
+    '.ds-resa-confirm button{align-self:flex-start;background:#fff;color:' + COLOR_ACCENT + ';border:none;font-size:14px;font-weight:600;' +
+      'padding:11px 22px;border-radius:9999px;cursor:pointer;margin-top:6px;transition:transform .25s ' + EASE + '}' +
+    '.ds-resa-confirm button:hover{transform:translateY(-2px)}' +
 
     'nav.ds-nav-scrolled{background:rgba(255,255,255,.85) !important;backdrop-filter:saturate(180%) blur(20px);' +
-      '-webkit-backdrop-filter:saturate(180%) blur(20px);box-shadow:0 1px 0 rgba(0,0,0,.07)}'
+      '-webkit-backdrop-filter:saturate(180%) blur(20px);box-shadow:0 1px 0 rgba(0,0,0,.08)}'
   );
 
   function initAll() {
@@ -102,11 +104,33 @@
     initReservation();
     initLocalVideoParallax();
     initNavScroll();
+    initMobileNav();
   }
 
   // =======================================================================
-  // 7) Nav transparente en haut de page, qui redevient blanche/floutée dès
-  //    qu'on scrolle un peu (lisible au-dessus de n'importe quel contenu).
+  // 7bis) Nav mobile : le burger ouvre/ferme le panneau de liens (<768px).
+  //       Se ferme automatiquement au clic sur un lien.
+  // =======================================================================
+  function initMobileNav() {
+    var burger = document.querySelector('.ds-nav-burger');
+    var links = document.querySelector('.ds-nav-links');
+    if (!burger || !links) return;
+    function setOpen(open) {
+      links.classList.toggle('ds-nav-open', open);
+      burger.classList.toggle('ds-nav-burger-open', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    burger.addEventListener('click', function () {
+      setOpen(!links.classList.contains('ds-nav-open'));
+    });
+    Array.prototype.slice.call(links.querySelectorAll('a')).forEach(function (a) {
+      a.addEventListener('click', function () { setOpen(false); });
+    });
+  }
+
+  // =======================================================================
+  // 7) Nav toujours blanche ; on ajoute juste un flou + une ombre légère
+  //    dès qu'on scrolle, pour la détacher du contenu en dessous.
   // =======================================================================
   function initNavScroll() {
     var nav = document.querySelector('nav');
@@ -325,7 +349,9 @@
     var header = document.getElementById('reserver');
     if (!header) return; // pas la page Contact
 
-    var card = header.querySelector('div[style*="background:#f5f5f7"]');
+    var nameInput = Array.prototype.slice.call(header.querySelectorAll('input'))
+      .filter(function (i) { return i.placeholder === 'Votre nom'; })[0];
+    var card = nameInput && nameInput.parentElement;
     if (!card) return;
 
     // Ajoute le champ date juste avant le champ nom (une seule fois).
@@ -370,7 +396,7 @@
       if (!group) return '';
       var chips = Array.prototype.slice.call(group.querySelectorAll('button'));
       var picked = chips.filter(function (b) {
-        return b.style.backgroundColor === 'rgb(138, 33, 64)';
+        return getComputedStyle(b).backgroundColor === 'rgb(138, 33, 64)';
       })[0];
       return picked ? picked.textContent.trim() : (chips[0] ? chips[0].textContent.trim() : '');
     }
@@ -428,11 +454,13 @@
 
   // =======================================================================
   // 5) Vidéo de fond du Hero (page Accueil) : lecture en boucle, mise en
-  //    pause dès qu'elle sort de l'écran pour ménager le CPU.
+  //    pause dès qu'elle sort de l'écran pour ménager le CPU, plus un
+  //    léger effet de parallaxe (zoom + dérive) pendant le scroll.
   // =======================================================================
   function initLocalVideoParallax() {
     var video = document.getElementById('ds-local-video');
     if (!video) return; // pas sur cette page
+    var header = video.closest('header');
 
     video.muted = true;
     video.loop = true;
@@ -449,6 +477,35 @@
     } else {
       tryPlay();
     }
+
+    var content = document.getElementById('ds-hero-content');
+    var scrollCue = document.querySelector('.ds-scroll-cue');
+    if (scrollCue) {
+      window.addEventListener('scroll', function () {
+        scrollCue.classList.toggle('ds-scroll-cue-hidden', window.scrollY > 40);
+      }, { passive: true });
+    }
+
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion || !header) return;
+
+    var ticking = false;
+    function apply() {
+      var rect = header.getBoundingClientRect();
+      var progress = Math.min(Math.max(-rect.top / (rect.height || 1), 0), 1);
+      var scale = 1 + progress * 0.12;
+      var shift = progress * 40;
+      video.style.transform = 'scale(' + scale.toFixed(3) + ') translateY(' + shift.toFixed(1) + 'px)';
+      if (content) {
+        content.style.opacity = String(Math.max(1 - progress * 1.6, 0));
+        content.style.transform = 'translateY(' + (progress * 30).toFixed(1) + 'px)';
+      }
+      ticking = false;
+    }
+    window.addEventListener('scroll', function () {
+      if (!ticking) { window.requestAnimationFrame(apply); ticking = true; }
+    }, { passive: true });
+    apply();
   }
 
   // =======================================================================

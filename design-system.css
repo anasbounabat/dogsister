@@ -1,0 +1,316 @@
+/*
+  DogSister — Design System
+  Tokens + utilitaires partagés par les 6 pages du site.
+  Les pages continuent d'utiliser des styles inline (contrainte du runtime
+  x-dc en place) mais référencent ces tokens via var(--ds-...). Seules les
+  propriétés sensibles à la largeur d'écran (grilles, tailles de titres,
+  padding de section) vivent dans les classes utilitaires ci-dessous, pour
+  permettre un vrai responsive sans toucher au reste du balisage.
+*/
+
+:root{
+  /* — Palette stricte : blanc / blanc cassé / gris + un seul accent discret — */
+  --ds-accent:#1d1d1f;
+  --ds-accent-hover:#424245;
+  --ds-accent-soft:rgba(29,29,31,.08);
+  --ds-accent-soft-2:rgba(29,29,31,.14);
+  /* Sections "fortes" : gris clair (jamais de fond noir) */
+  --ds-dark:#f5f5f7;
+  --ds-dark-2:#ffffff;
+  --ds-dark-hairline:rgba(0,0,0,.08);
+  --ds-dark-hairline-strong:rgba(0,0,0,.14);
+
+  /* — Neutres (aucun fond coloré en dehors de l'accent ci-dessus) — */
+  --ds-white:#ffffff;
+  --ds-surface:#f8f8f8;
+  --ds-surface-tint:#f5f5f7;
+  --ds-gray-300:#d2d2d7;
+  --ds-gray-200:#ececec;
+  --ds-ink:#1d1d1f;
+  --ds-ink-muted:#6e6e73;
+  --ds-ink-faint:#a1a1a6;
+  --ds-on-dark:#1d1d1f;
+  --ds-on-dark-muted:#6e6e73;
+  --ds-hairline:rgba(0,0,0,.08);
+
+  /* — Spacing (grille 8pt) — */
+  --ds-space-1:8px;
+  --ds-space-2:16px;
+  --ds-space-3:24px;
+  --ds-space-4:32px;
+  --ds-space-5:48px;
+  --ds-space-6:64px;
+  --ds-space-7:96px;
+  --ds-space-8:128px;
+
+  /* — Radius — */
+  --ds-radius-pill:9999px;
+  --ds-radius-input:18px;
+  --ds-radius-card:24px;
+  --ds-radius-image:32px;
+  --ds-radius-section:40px;
+
+  /* — Ombres (toujours douces) — */
+  --ds-shadow-sm:0 2px 10px rgba(20,20,22,.06);
+  --ds-shadow-md:0 16px 36px rgba(20,20,22,.09);
+  --ds-shadow-lg:0 28px 64px rgba(20,20,22,.13);
+  --ds-shadow-dark-md:0 24px 56px rgba(20,20,22,.12);
+
+  /* — Typographie — */
+  --ds-font:'Inter',system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
+  --ds-text-hero:clamp(2.5rem,1.6rem + 3.6vw,4.75rem);
+  --ds-text-section:clamp(2rem,1.5rem + 2vw,3.25rem);
+  --ds-text-subtitle:clamp(1.25rem,1.1rem + .6vw,1.75rem);
+  --ds-text-body:18px;
+  --ds-text-small:16px;
+  --ds-text-btn:17px;
+  --ds-text-btn-sm:14px;
+  --ds-text-eyebrow:14px;
+
+  /* — Mouvement — */
+  --ds-dur-1:300ms;
+  --ds-dur-2:450ms;
+  --ds-dur-3:600ms;
+  --ds-dur-4:800ms;
+  --ds-ease:cubic-bezier(.22,1,.36,1);
+
+  /* — Boutons (une seule famille : pill, deux tailles) — */
+  --ds-btn-py:16px;
+  --ds-btn-px:32px;
+  --ds-btn-py-sm:10px;
+  --ds-btn-px-sm:22px;
+}
+
+@font-face{
+  font-family:'Inter';
+  src:local('Inter');
+  font-display:swap;
+}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.001ms!important;
+    scroll-behavior:auto!important;
+  }
+}
+
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{
+  outline:2px solid var(--ds-accent);
+  outline-offset:3px;
+  border-radius:var(--ds-radius-input);
+}
+
+/* — Titres fluides (clamp = responsive sans media query) — */
+.ds-hero-title{
+  font-size:var(--ds-text-hero);
+  font-weight:700;
+  line-height:1.04;
+  letter-spacing:-.03em;
+}
+.ds-section-title{
+  font-size:var(--ds-text-section);
+  font-weight:700;
+  line-height:1.05;
+  letter-spacing:-.02em;
+}
+.ds-subtitle{
+  font-size:var(--ds-text-subtitle);
+  font-weight:600;
+  line-height:1.4;
+}
+
+/* — Padding de section, responsive — */
+.ds-section{
+  padding:var(--ds-space-7) var(--ds-space-5);
+  box-sizing:border-box;
+}
+@media (max-width:1024px){
+  .ds-section{padding:var(--ds-space-6) var(--ds-space-4);}
+}
+@media (max-width:767px){
+  .ds-section{padding:var(--ds-space-5) var(--ds-space-3);}
+}
+
+/* — Grilles utilitaires : seule la colonne change avec la largeur — */
+.ds-grid-2{display:grid;grid-template-columns:repeat(2,1fr);}
+.ds-grid-3{display:grid;grid-template-columns:repeat(3,1fr);}
+.ds-grid-4{display:grid;grid-template-columns:repeat(4,1fr);}
+.ds-grid-5{display:grid;grid-template-columns:repeat(5,1fr);}
+@media (max-width:1024px){
+  .ds-grid-3,.ds-grid-4,.ds-grid-5{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:767px){
+  .ds-grid-2,.ds-grid-3,.ds-grid-4,.ds-grid-5{grid-template-columns:1fr;}
+}
+
+/* — Mosaïque photo du hero Local (placements explicites) : pile sur mobile — */
+.ds-mosaic-hero{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:130px 130px;}
+@media (max-width:767px){
+  .ds-mosaic-hero{grid-template-columns:1fr!important;grid-template-rows:none!important;}
+  .ds-mosaic-hero>*{grid-column:auto!important;grid-row:auto!important;height:200px!important;}
+}
+
+/* — Nav façon Apple : logo à gauche, liens centrés dans l'espace restant,
+   actions à droite — même structure à 3 zones que apple.com, fond blanc — */
+.ds-nav{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:var(--ds-white);
+  border-bottom:1px solid var(--ds-hairline);
+  transition:box-shadow var(--ds-dur-1) ease,backdrop-filter var(--ds-dur-1) ease;
+}
+.ds-nav-inner{
+  display:flex;
+  align-items:center;
+  height:64px;
+  max-width:1120px;
+  margin:0 auto;
+  padding:0 var(--ds-space-4);
+}
+@media (max-width:767px){
+  .ds-nav-inner{justify-content:space-between;padding:0 var(--ds-space-3);}
+}
+.ds-nav-logo{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:600;color:var(--ds-ink);flex-shrink:0;}
+.ds-nav-links{display:flex;align-items:center;justify-content:center;flex:1;gap:var(--ds-space-4);font-size:14px;}
+.ds-nav-links a{color:var(--ds-ink-muted);transition:color var(--ds-dur-1);padding-bottom:2px;border-bottom:2px solid transparent;}
+.ds-nav-links a:hover{color:var(--ds-ink);}
+.ds-nav-links a[aria-current="page"]{color:var(--ds-ink);font-weight:600;border-bottom-color:var(--ds-accent);}
+.ds-nav-right{display:flex;align-items:center;gap:var(--ds-space-2);flex-shrink:0;}
+
+/* — Nav mobile : burger + panneau déroulant sous 768px — */
+.ds-nav-burger{
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:5px;
+  width:40px;
+  height:40px;
+  border:none;
+  background:transparent;
+  cursor:pointer;
+  padding:0;
+  flex-shrink:0;
+}
+.ds-nav-burger span{
+  display:block;
+  width:20px;
+  height:2px;
+  background:var(--ds-ink);
+  border-radius:2px;
+  transition:transform var(--ds-dur-1) var(--ds-ease),opacity var(--ds-dur-1) var(--ds-ease);
+}
+.ds-nav-burger.ds-nav-burger-open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.ds-nav-burger.ds-nav-burger-open span:nth-child(2){opacity:0;}
+.ds-nav-burger.ds-nav-burger-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+@media (max-width:767px){
+  .ds-nav-burger{display:flex;}
+  .ds-nav-links{
+    position:fixed;
+    top:64px;
+    left:0;
+    right:0;
+    flex-direction:column!important;
+    align-items:flex-start!important;
+    gap:0!important;
+    background:var(--ds-white);
+    padding:var(--ds-space-2) var(--ds-space-5);
+    box-shadow:var(--ds-shadow-md);
+    transform:translateY(-12px);
+    opacity:0;
+    visibility:hidden;
+    transition:opacity var(--ds-dur-2) var(--ds-ease),transform var(--ds-dur-2) var(--ds-ease),visibility var(--ds-dur-2);
+  }
+  .ds-nav-links a{width:100%;padding:14px 0!important;border-bottom:1px solid var(--ds-hairline);color:var(--ds-ink)!important;}
+  .ds-nav-links a:hover,.ds-nav-links a[aria-current="page"]{color:var(--ds-accent)!important;}
+  .ds-nav-links.ds-nav-open{opacity:1;transform:none;visibility:visible;}
+}
+
+/* — Indicateur de scroll du hero vidéo — */
+.ds-scroll-cue{
+  position:absolute;
+  left:50%;
+  bottom:var(--ds-space-4);
+  transform:translateX(-50%);
+  z-index:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  opacity:0;
+  transition:opacity var(--ds-dur-2) var(--ds-ease);
+  animation:ds-fadeup var(--ds-dur-4) var(--ds-ease) 1.1s both;
+}
+.ds-scroll-cue.ds-scroll-cue-hidden{opacity:0!important;}
+.ds-scroll-cue-label{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.75);}
+.ds-scroll-cue-mouse{width:22px;height:36px;border-radius:12px;border:1.5px solid rgba(255,255,255,.6);display:flex;justify-content:center;padding-top:6px;box-sizing:border-box;}
+.ds-scroll-cue-dot{width:4px;height:4px;border-radius:50%;background:#fff;animation:ds-scroll-dot 1.6s ease-in-out infinite;}
+@keyframes ds-scroll-dot{
+  0%{transform:translateY(0);opacity:1}
+  70%{transform:translateY(10px);opacity:0}
+  100%{transform:translateY(0);opacity:0}
+}
+@media (prefers-reduced-motion: reduce){
+  .ds-scroll-cue-dot{animation:none;opacity:1}
+}
+
+/* — Carrousel horizontal (contenus mis en avant) — */
+.ds-carousel{
+  display:flex;
+  gap:var(--ds-space-3);
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  padding:4px 4px 12px;
+  scrollbar-width:none;
+}
+.ds-carousel::-webkit-scrollbar{display:none;}
+.ds-carousel-card{
+  position:relative;
+  flex:0 0 auto;
+  width:min(560px,78vw);
+  aspect-ratio:16/9;
+  border-radius:var(--ds-radius-card);
+  overflow:hidden;
+  scroll-snap-align:start;
+  box-shadow:var(--ds-shadow-md);
+}
+.ds-carousel-card::after{
+  content:"";
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,0) 35%,rgba(0,0,0,.78) 100%);
+}
+.ds-carousel-content{
+  position:absolute;left:0;right:0;bottom:0;z-index:1;
+  padding:var(--ds-space-3);
+  display:flex;flex-direction:column;gap:6px;
+  color:var(--ds-white);
+}
+.ds-carousel-badge{font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;opacity:.95;}
+.ds-carousel-title{font-size:clamp(20px,2.2vw,28px);font-weight:700;margin:0;}
+.ds-carousel-desc{font-size:15px;line-height:1.4;opacity:.9;margin:0;max-width:36ch;}
+.ds-carousel-cta{
+  align-self:flex-start;
+  margin-top:8px;
+  background:rgba(255,255,255,.92);
+  color:var(--ds-ink);
+  font-size:14px;font-weight:600;
+  padding:10px 20px;
+  border-radius:var(--ds-radius-pill);
+  transition:transform var(--ds-dur-1) var(--ds-ease),background var(--ds-dur-1);
+}
+
+/* — Formes de bouton unique (pill), tailles standard, hauteur cohérente — */
+.ds-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  font-family:var(--ds-font);
+  font-weight:500;
+  border-radius:var(--ds-radius-pill);
+  transition:transform var(--ds-dur-1) var(--ds-ease),box-shadow var(--ds-dur-1) var(--ds-ease),background var(--ds-dur-1) var(--ds-ease),color var(--ds-dur-1) var(--ds-ease),border-color var(--ds-dur-1) var(--ds-ease);
+}

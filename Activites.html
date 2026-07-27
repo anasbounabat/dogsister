@@ -2,15 +2,19 @@
 <html><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="design-system.css">
 <script src="react.production.min.js"></script>
 <script src="react-dom.production.min.js"></script>
 <script src="dc-runtime.js"></script>
 <script src="cursor.js"></script>
 </head>
 <body>
-<div id="ds-loader" style="position:fixed;inset:0;z-index:999999;background:#8a2140;display:flex;align-items:center;justify-content:center;transition:opacity .6s ease,visibility .6s ease">
+<div id="ds-loader" style="position:fixed;inset:0;z-index:999999;background:var(--ds-accent,#1d1d1f);display:flex;align-items:center;justify-content:center;transition:opacity .6s ease,visibility .6s ease">
 <div style="position:relative;width:96px;height:96px;display:flex;align-items:center;justify-content:center">
-<div style="position:absolute;inset:0;border-radius:50%;border:3px solid rgba(243,237,230,.25);border-top-color:#f3ede6;animation:ds-spin .9s linear infinite"></div>
+<div style="position:absolute;inset:0;border-radius:50%;border:3px solid rgba(255,255,255,.25);border-top-color:var(--ds-surface-tint,#f5f5f7);animation:ds-spin .9s linear infinite"></div>
 <img src="logo.png" alt="DogSister" style="width:54px;height:54px;border-radius:50%;object-fit:cover">
 </div>
 </div>
@@ -19,82 +23,86 @@
 <helmet data-dc-atomics="">
 <style>
 html{scroll-snap-type:y proximity;scroll-padding-top:60px;scroll-behavior:smooth}
-body{margin:0;background:#ffffff;color:#1d1d1f;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
-a{color:#1d1d1f;text-decoration:none}a:hover{color:#8a2140}
+body{margin:0;background:var(--ds-white);color:var(--ds-ink);font-family:var(--ds-font);-webkit-font-smoothing:antialiased}
+a{color:var(--ds-ink);text-decoration:none}a:hover{color:var(--ds-accent)}
 @keyframes ds-fadeup{from{opacity:0;transform:translateY(36px) scale(.98);filter:blur(8px)}to{opacity:1;transform:none;filter:none}}
 @keyframes ds-navin{from{opacity:0;transform:translateY(-100%)}to{opacity:1;transform:none}}
 @keyframes ds-spin{to{transform:rotate(360deg)}}
 @keyframes ds-float{0%,100%{transform:translateY(-8px) rotate(var(--ds-rot,0deg))}50%{transform:translateY(10px) rotate(var(--ds-rot,0deg))}}
 </style></helmet>
 
-<nav style="position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:40px;padding:0 48px;height:60px;background:transparent;transition:background .3s ease,backdrop-filter .3s ease,box-shadow .3s ease">
-<a href="index.html" style="display:flex;align-items:center;gap:10px;font-size:19px;font-weight:700;letter-spacing:-.02em"><img src="logo.png" alt="DogSister" style="height:34px;width:34px;border-radius:50%;object-fit:cover">DogSister</a>
-<span style="flex:1"></span>
-<div style="display:flex;align-items:center;gap:32px;font-size:14px">
-<a href="index.html" style="color:#1d1d1f;transition:color .25s" style-hover="color:#8a2140">Accueil</a><a href="Services.html" style="color:#1d1d1f;transition:color .25s" style-hover="color:#8a2140">Services &amp; Tarifs</a><a href="Activites.html" style="color:#1d1d1f;font-weight:600;border-bottom:2px solid #8a2140;padding-bottom:2px;transition:color .25s" style-hover="color:#8a2140">Activités</a><a href="Local.html" style="color:#1d1d1f;transition:color .25s" style-hover="color:#8a2140">Le local</a><a href="A-propos.html" style="color:#1d1d1f;transition:color .25s" style-hover="color:#8a2140">À propos</a><a href="Contact.html" style="color:#1d1d1f;transition:color .25s" style-hover="color:#8a2140">Contact</a>
+<nav class="ds-nav">
+<div class="ds-nav-inner">
+<a href="index.html" class="ds-nav-logo"><img src="logo.png" alt="DogSister" style="height:22px;width:22px;border-radius:50%;object-fit:cover">DogSister</a>
+<div class="ds-nav-links">
+<a href="index.html">Accueil</a><a href="Services.html">Services &amp; Tarifs</a><a href="Activites.html" aria-current="page">Activités</a><a href="Local.html">Le local</a><a href="A-propos.html">À propos</a><a href="Contact.html">Contact</a>
 </div>
-<a href="Contact.html" style="background:#3d1522;color:#fff;font-size:14px;font-weight:500;padding:9px 24px;border-radius:22px;transition:background .25s" style-hover="background:#8a2140;color:#fff">Réserver</a>
+<div class="ds-nav-right">
+<a href="Contact.html" style="background:var(--ds-accent);color:var(--ds-white);font-size:var(--ds-text-btn-sm);font-weight:500;padding:var(--ds-btn-py-sm) var(--ds-btn-px-sm);border-radius:var(--ds-radius-pill);transition:background var(--ds-dur-1),transform var(--ds-dur-1)" style-hover="background:var(--ds-accent-hover);color:var(--ds-white);transform:translateY(-1px)">Réserver</a>
+<button type="button" class="ds-nav-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</div>
+</div>
 </nav>
 
-<header data-reveal="" data-screen-label="Activités hero" style="box-sizing:border-box;min-height:100vh;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:24px;padding:48px 24px;background:#f8e4ea">
-<p style="margin:0;font-size:15px;font-weight:600;color:#8a2140;letter-spacing:.06em;text-transform:uppercase">Activités &amp; événements</p>
-<h1 style="margin:0;font-size:60px;line-height:1.05;font-weight:700;letter-spacing:-.03em;max-width:800px;text-wrap:balance">Le week-end, le local devient atelier.</h1>
-<p style="margin:0;font-size:21px;line-height:1.5;color:#6e6e73;max-width:580px;text-wrap:pretty">Couture, céramique, et bientôt bien plus. Des moments créatifs à partager, toujours autour du chien.</p>
-<a href="#agenda" style="background:#8a2140;color:#fff;font-size:17px;font-weight:500;padding:14px 32px;border-radius:24px" style-hover="background:#6f1a33;color:#fff">Voir l'agenda</a>
+<header data-reveal="" data-screen-label="Activités hero" class="ds-section" style="box-sizing:border-box;position:relative;min-height:100vh;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:var(--ds-space-3);background:var(--ds-surface-tint);overflow:hidden">
+<p style="position:relative;z-index:1;margin:0;font-size:var(--ds-text-eyebrow);font-weight:600;color:var(--ds-accent);letter-spacing:.06em;text-transform:uppercase">Activités &amp; événements</p>
+<h1 class="ds-hero-title" style="position:relative;z-index:1;margin:0;max-width:800px;text-wrap:balance">Le week-end, le local devient atelier.</h1>
+<p class="ds-subtitle" style="position:relative;z-index:1;margin:0;color:var(--ds-ink-muted);max-width:580px;text-wrap:pretty">Couture, céramique, et bientôt bien plus. Des moments créatifs à partager, toujours autour du chien.</p>
+<a href="#agenda" style="position:relative;z-index:1;background:var(--ds-accent);color:var(--ds-white);font-size:var(--ds-text-btn);font-weight:500;padding:var(--ds-btn-py) var(--ds-btn-px);border-radius:var(--ds-radius-pill);transition:background var(--ds-dur-1),transform var(--ds-dur-1)" style-hover="background:var(--ds-accent-hover);color:var(--ds-white);transform:translateY(-2px)">Voir l'agenda</a>
 </header>
 
-<section id="agenda" data-reveal="" data-screen-label="Agenda" style="box-sizing:border-box;min-height:100vh;scroll-snap-align:start;background:#f3ede6;padding:96px 48px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:48px">
-<h2 style="margin:0;font-size:44px;font-weight:700;letter-spacing:-.02em">Ce mois-ci au local</h2>
-<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px;width:min(980px,100%)">
-<article style="background:#fff;border-radius:24px;overflow:hidden;display:flex;flex-direction:column" style-hover="transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.08);transition:all .3s ease">
-<div style="height:240px;background:repeating-linear-gradient(45deg,#f5f0ec,#f5f0ec 14px,#efe7e0 14px,#efe7e0 28px);display:flex;align-items:center;justify-content:center;color:#a08874;font-family:ui-monospace,Menlo,monospace;font-size:12px">photo — atelier couture</div>
-<div style="padding:28px 32px 32px;display:flex;flex-direction:column;gap:10px">
-<p style="margin:0;font-size:13px;font-weight:600;color:#8a2140;letter-spacing:.06em;text-transform:uppercase">Samedi · 14h — 16h</p>
+<section id="agenda" data-reveal="" data-screen-label="Agenda" class="ds-section" style="box-sizing:border-box;min-height:100vh;scroll-snap-align:start;background:var(--ds-white);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--ds-space-5)">
+<h2 class="ds-section-title" style="margin:0">Ce mois-ci au local</h2>
+<div class="ds-grid-2" style="gap:var(--ds-space-3);width:min(980px,100%)">
+<article style="background:var(--ds-surface-tint);border-radius:var(--ds-radius-card);overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--ds-shadow-sm);transition:transform var(--ds-dur-2) var(--ds-ease),box-shadow var(--ds-dur-2) var(--ds-ease)" style-hover="transform:translateY(-4px);box-shadow:var(--ds-shadow-md)">
+<div style="height:240px;background:repeating-linear-gradient(45deg,var(--ds-surface),var(--ds-surface) 14px,var(--ds-gray-200) 14px,var(--ds-gray-200) 28px);display:flex;align-items:center;justify-content:center;color:var(--ds-ink-faint);font-family:ui-monospace,Menlo,monospace;font-size:12px">photo — atelier couture</div>
+<div style="padding:var(--ds-space-3) var(--ds-space-4) var(--ds-space-4);display:flex;flex-direction:column;gap:10px">
+<p style="margin:0;font-size:13px;font-weight:600;color:var(--ds-accent);letter-spacing:.06em;text-transform:uppercase">Samedi · 14h — 16h</p>
 <h3 style="margin:0;font-size:24px;font-weight:700">Atelier couture</h3>
-<p style="margin:0;font-size:16px;line-height:1.55;color:#6e6e73;text-wrap:pretty">Cousez un bandana ou un manteau sur mesure pour votre chien. Matériel fourni, tous niveaux.</p>
-<div style="display:flex;align-items:center;gap:16px;margin-top:8px">
+<p style="margin:0;font-size:var(--ds-text-small);line-height:1.55;color:var(--ds-ink-muted);text-wrap:pretty">Cousez un bandana ou un manteau sur mesure pour votre chien. Matériel fourni, tous niveaux.</p>
+<div style="display:flex;align-items:center;gap:var(--ds-space-2);margin-top:8px;flex-wrap:wrap">
 <span style="font-size:17px;font-weight:600">25 € / pers.</span>
-<a href="Contact.html" style="background:#3d1522;color:#fff;font-size:14px;font-weight:500;padding:10px 22px;border-radius:24px" style-hover="background:#8a2140;color:#fff">Réserver ma place</a>
+<a href="Contact.html" style="background:var(--ds-dark);color:var(--ds-white);font-size:var(--ds-text-btn-sm);font-weight:500;padding:10px 22px;border-radius:var(--ds-radius-pill);transition:background var(--ds-dur-1)" style-hover="background:var(--ds-accent);color:var(--ds-white)">Réserver ma place</a>
 </div>
 </div>
 </article>
-<article style="background:#fff;border-radius:24px;overflow:hidden;display:flex;flex-direction:column" style-hover="transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.08);transition:all .3s ease">
-<div style="height:240px;background:repeating-linear-gradient(45deg,#f5f0ec,#f5f0ec 14px,#efe7e0 14px,#efe7e0 28px);display:flex;align-items:center;justify-content:center;color:#a08874;font-family:ui-monospace,Menlo,monospace;font-size:12px">photo — atelier céramique</div>
-<div style="padding:28px 32px 32px;display:flex;flex-direction:column;gap:10px">
-<p style="margin:0;font-size:13px;font-weight:600;color:#8a2140;letter-spacing:.06em;text-transform:uppercase">Dimanche · 10h — 12h</p>
+<article style="background:var(--ds-surface-tint);border-radius:var(--ds-radius-card);overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--ds-shadow-sm);transition:transform var(--ds-dur-2) var(--ds-ease),box-shadow var(--ds-dur-2) var(--ds-ease)" style-hover="transform:translateY(-4px);box-shadow:var(--ds-shadow-md)">
+<div style="height:240px;background:repeating-linear-gradient(45deg,var(--ds-surface),var(--ds-surface) 14px,var(--ds-gray-200) 14px,var(--ds-gray-200) 28px);display:flex;align-items:center;justify-content:center;color:var(--ds-ink-faint);font-family:ui-monospace,Menlo,monospace;font-size:12px">photo — atelier céramique</div>
+<div style="padding:var(--ds-space-3) var(--ds-space-4) var(--ds-space-4);display:flex;flex-direction:column;gap:10px">
+<p style="margin:0;font-size:13px;font-weight:600;color:var(--ds-accent);letter-spacing:.06em;text-transform:uppercase">Dimanche · 10h — 12h</p>
 <h3 style="margin:0;font-size:24px;font-weight:700">Atelier céramique</h3>
-<p style="margin:0;font-size:16px;line-height:1.55;color:#6e6e73;text-wrap:pretty">Façonnez la gamelle ou la médaille de votre compagnon. Cuisson incluse, pièce à récupérer au local.</p>
-<div style="display:flex;align-items:center;gap:16px;margin-top:8px">
+<p style="margin:0;font-size:var(--ds-text-small);line-height:1.55;color:var(--ds-ink-muted);text-wrap:pretty">Façonnez la gamelle ou la médaille de votre compagnon. Cuisson incluse, pièce à récupérer au local.</p>
+<div style="display:flex;align-items:center;gap:var(--ds-space-2);margin-top:8px;flex-wrap:wrap">
 <span style="font-size:17px;font-weight:600">35 € / pers.</span>
-<a href="Contact.html" style="background:#3d1522;color:#fff;font-size:14px;font-weight:500;padding:10px 22px;border-radius:24px" style-hover="background:#8a2140;color:#fff">Réserver ma place</a>
+<a href="Contact.html" style="background:var(--ds-dark);color:var(--ds-white);font-size:var(--ds-text-btn-sm);font-weight:500;padding:10px 22px;border-radius:var(--ds-radius-pill);transition:background var(--ds-dur-1)" style-hover="background:var(--ds-accent);color:var(--ds-white)">Réserver ma place</a>
 </div>
 </div>
 </article>
 </div>
-<p style="margin:0;font-size:16px;color:#6e6e73">De nouvelles activités arrivent chaque mois — suivez-nous pour ne rien manquer.</p>
+<p style="margin:0;font-size:var(--ds-text-small);color:var(--ds-ink-muted)">De nouvelles activités arrivent chaque mois — suivez-nous pour ne rien manquer.</p>
 </section>
 
-<section data-reveal="" data-screen-label="Espace pro" style="box-sizing:border-box;min-height:100vh;scroll-snap-align:start;background:#3d1522;color:#f5f5f7;padding:96px 48px;display:flex;align-items:center;justify-content:center">
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;width:min(1080px,100%);align-items:center">
-<div style="display:flex;flex-direction:column;gap:24px">
-<p style="margin:0;font-size:14px;font-weight:600;color:#d98aa0;letter-spacing:.06em;text-transform:uppercase">Espace pro</p>
-<h2 style="margin:0;font-size:48px;font-weight:700;letter-spacing:-.03em;text-wrap:balance">Vous animez un atelier ? Le local est à vous.</h2>
-<p style="margin:0;font-size:19px;line-height:1.55;color:#a1a1a6;text-wrap:pretty">Créateurs, artisans, éducateurs : proposez votre activité du week-end. Nous fournissons le lieu, la communauté et la communication — vous apportez votre savoir-faire.</p>
+<section data-reveal="" data-screen-label="Espace pro" class="ds-section" style="box-sizing:border-box;position:relative;min-height:100vh;scroll-snap-align:start;background:var(--ds-dark);color:var(--ds-on-dark);display:flex;align-items:center;justify-content:center;overflow:hidden">
+<div class="ds-grid-2" style="position:relative;z-index:1;gap:var(--ds-space-6);width:min(1080px,100%);align-items:center">
+<div style="display:flex;flex-direction:column;gap:var(--ds-space-3)">
+<p style="margin:0;font-size:var(--ds-text-eyebrow);font-weight:600;color:var(--ds-on-dark-muted);letter-spacing:.06em;text-transform:uppercase">Espace pro</p>
+<h2 class="ds-section-title" style="margin:0;text-wrap:balance">Vous animez un atelier ? Le local est à vous.</h2>
+<p style="margin:0;font-size:var(--ds-text-subtitle);line-height:1.55;color:var(--ds-on-dark-muted);text-wrap:pretty">Créateurs, artisans, éducateurs : proposez votre activité du week-end. Nous fournissons le lieu, la communauté et la communication — vous apportez votre savoir-faire.</p>
 </div>
-<form style="background:#4a1f30;border-radius:24px;padding:40px;display:flex;flex-direction:column;gap:16px">
-<input placeholder="Votre nom / atelier" style="font-family:inherit;font-size:16px;padding:14px 18px;border-radius:12px;border:1px solid #6e2f42;background:#3d1522;color:#f5f5f7;outline:none" style-focus="border-color:#8a2140">
-<input placeholder="Email ou téléphone" style="font-family:inherit;font-size:16px;padding:14px 18px;border-radius:12px;border:1px solid #6e2f42;background:#3d1522;color:#f5f5f7;outline:none" style-focus="border-color:#8a2140">
-<textarea placeholder="Décrivez votre activité (thème, durée, matériel, tarif envisagé…)" rows="4" style="font-family:inherit;font-size:16px;padding:14px 18px;border-radius:12px;border:1px solid #6e2f42;background:#3d1522;color:#f5f5f7;outline:none;resize:vertical" style-focus="border-color:#8a2140"></textarea>
-<button type="button" sc-camel-on-click="{{ proSubmit }}" style="font-family:inherit;background:#8a2140;color:#fff;font-size:17px;font-weight:500;padding:14px 24px;border-radius:24px;border:none;cursor:pointer" style-hover="background:#6f1a33">{{ proLabel }}</button>
+<form style="background:var(--ds-dark-2);border-radius:var(--ds-radius-card);padding:var(--ds-space-4);display:flex;flex-direction:column;gap:var(--ds-space-2)">
+<input placeholder="Votre nom / atelier" style="font-family:inherit;font-size:16px;padding:14px 18px;border-radius:var(--ds-radius-input);border:1px solid var(--ds-dark-hairline-strong);background:var(--ds-dark);color:var(--ds-on-dark);outline:none;transition:border-color var(--ds-dur-2)" style-focus="border-color:var(--ds-accent)">
+<input placeholder="Email ou téléphone" style="font-family:inherit;font-size:16px;padding:14px 18px;border-radius:var(--ds-radius-input);border:1px solid var(--ds-dark-hairline-strong);background:var(--ds-dark);color:var(--ds-on-dark);outline:none;transition:border-color var(--ds-dur-2)" style-focus="border-color:var(--ds-accent)">
+<textarea placeholder="Décrivez votre activité (thème, durée, matériel, tarif envisagé…)" rows="4" style="font-family:inherit;font-size:16px;padding:14px 18px;border-radius:var(--ds-radius-input);border:1px solid var(--ds-dark-hairline-strong);background:var(--ds-dark);color:var(--ds-on-dark);outline:none;resize:vertical;transition:border-color var(--ds-dur-2)" style-focus="border-color:var(--ds-accent)"></textarea>
+<button type="button" sc-camel-on-click="{{ proSubmit }}" style="font-family:inherit;background:var(--ds-accent);color:var(--ds-white);font-size:var(--ds-text-btn);font-weight:500;padding:var(--ds-btn-py) var(--ds-space-3);border-radius:var(--ds-radius-pill);border:none;cursor:pointer;transition:background var(--ds-dur-1),transform var(--ds-dur-1)" style-hover="background:var(--ds-accent-hover);transform:translateY(-2px)">{{ proLabel }}</button>
 </form>
 </div>
 </section>
 
-<footer style="background:#f3ede6;border-top:1px solid rgba(0,0,0,.08);padding:40px 48px;display:flex;align-items:center;gap:32px;font-size:13px;color:#6e6e73">
-<span style="display:flex;align-items:center;gap:8px;font-weight:700;color:#1d1d1f;font-size:15px"><img src="logo.png" alt="DogSister" style="height:26px;width:26px;border-radius:50%;object-fit:cover">DogSister</span>
+<footer style="background:var(--ds-surface-tint);border-top:1px solid var(--ds-hairline);padding:var(--ds-space-4) var(--ds-space-5);display:flex;align-items:center;gap:var(--ds-space-4);font-size:13px;color:var(--ds-ink-muted);flex-wrap:wrap">
+<span style="display:flex;align-items:center;gap:8px;font-weight:700;color:var(--ds-ink);font-size:15px"><img src="logo.png" alt="DogSister" style="height:26px;width:26px;border-radius:50%;object-fit:cover">DogSister</span>
 <span>Garde, promenades et éducation canine — Fontenay-sous-Bois, Île-de-France</span>
 <span style="flex:1"></span>
-<a href="index.html" style="color:#6e6e73">Accueil</a><a href="Services.html" style="color:#6e6e73">Services</a><a href="Local.html" style="color:#6e6e73">Le local</a><a href="A-propos.html" style="color:#6e6e73">À propos</a><a href="Contact.html" style="color:#6e6e73">Contact</a>
+<a href="index.html" style="color:var(--ds-ink-muted)">Accueil</a><a href="Services.html" style="color:var(--ds-ink-muted)">Services</a><a href="Local.html" style="color:var(--ds-ink-muted)">Le local</a><a href="A-propos.html" style="color:var(--ds-ink-muted)">À propos</a><a href="Contact.html" style="color:var(--ds-ink-muted)">Contact</a>
 </footer>
 
 
@@ -105,7 +113,7 @@ class Component extends DCLogic {
   componentDidMount() {
     if (window.initCursor) window.initCursor();
     const nav = document.querySelector('nav');
-    if (nav) nav.style.animation = 'ds-navin .7s cubic-bezier(.22,.61,.36,1) both';
+    if (nav) nav.style.animation = 'ds-navin .7s cubic-bezier(.22,1,.36,1) both';
     document.querySelectorAll('[data-float]').forEach((el, i) => {
       el.style.setProperty('--ds-rot', el.dataset.float || '0deg');
       el.style.animation = 'ds-float ' + (4.5 + i * 0.9) + 's ease-in-out ' + (i * 0.7) + 's infinite';
@@ -120,11 +128,11 @@ class Component extends DCLogic {
         const sub = (k.children.length >= 2 && (disp === 'grid' || disp === 'flex')) ? Array.from(k.children) : null;
         if (sub) {
           sub.forEach(s => {
-            s.style.animation = 'ds-fadeup .9s cubic-bezier(.22,.61,.36,1) ' + d.toFixed(2) + 's both';
+            s.style.animation = 'ds-fadeup .9s cubic-bezier(.22,1,.36,1) ' + d.toFixed(2) + 's both';
             d += 0.1;
           });
         } else {
-          k.style.animation = 'ds-fadeup .9s cubic-bezier(.22,.61,.36,1) ' + d.toFixed(2) + 's both';
+          k.style.animation = 'ds-fadeup .9s cubic-bezier(.22,1,.36,1) ' + d.toFixed(2) + 's both';
           d += 0.12;
         }
       });
